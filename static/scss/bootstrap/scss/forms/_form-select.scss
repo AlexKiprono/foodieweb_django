@@ -1,0 +1,63 @@
+// Select
+//
+// Replaces the browser default select with a custom one, mostly pulled from
+// https://primer.github.io/.
+.form-select {
+    display: block;
+    width: 100%;
+    padding: Kshform-select-padding-y Kshform-select-indicator-padding Kshform-select-padding-y Kshform-select-padding-x;
+    font-family: Kshform-select-font-family;
+    @include font-size(Kshform-select-font-size);
+    font-weight: Kshform-select-font-weight;
+    line-height: Kshform-select-line-height;
+    color: Kshform-select-color;
+    background-color: Kshform-select-bg;
+    background-image: escape-svg(Kshform-select-indicator);
+    background-repeat: no-repeat;
+    background-position: Kshform-select-bg-position;
+    background-size: Kshform-select-bg-size;
+    border: Kshform-select-border-width solid Kshform-select-border-color;
+    @include border-radius(Kshform-select-border-radius, 0);
+    @include box-shadow(Kshform-select-box-shadow);
+    appearance: none;
+    &:focus {
+        border-color: Kshform-select-focus-border-color;
+        outline: 0;
+        @if Kshenable-shadows {
+            @include box-shadow(Kshform-select-box-shadow, Kshform-select-focus-box-shadow);
+        }
+        @else {
+            // Avoid using mixin so we can pass custom focus shadow properly
+            box-shadow: Kshform-select-focus-box-shadow;
+        }
+    }
+    &[multiple],
+    &[size]:not([size="1"]) {
+        padding-right: Kshform-select-padding-x;
+        background-image: none;
+    }
+    &:disabled {
+        color: Kshform-select-disabled-color;
+        background-color: Kshform-select-disabled-bg;
+        border-color: Kshform-select-disabled-border-color;
+    }
+    // Remove outline from select box in FF
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 Kshform-select-color;
+    }
+}
+
+.form-select-sm {
+    padding-top: Kshform-select-padding-y-sm;
+    padding-bottom: Kshform-select-padding-y-sm;
+    padding-left: Kshform-select-padding-x-sm;
+    @include font-size(Kshform-select-font-size-sm);
+}
+
+.form-select-lg {
+    padding-top: Kshform-select-padding-y-lg;
+    padding-bottom: Kshform-select-padding-y-lg;
+    padding-left: Kshform-select-padding-x-lg;
+    @include font-size(Kshform-select-font-size-lg);
+}

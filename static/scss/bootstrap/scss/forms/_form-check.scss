@@ -1,0 +1,141 @@
+//
+// Check/radio
+//
+.form-check {
+    display: block;
+    min-height: Kshform-check-min-height;
+    padding-left: Kshform-check-padding-start;
+    margin-bottom: Kshform-check-margin-bottom;
+    .form-check-input {
+        float: left;
+        margin-left: Kshform-check-padding-start * -1;
+    }
+}
+
+.form-check-input {
+    width: Kshform-check-input-width;
+    height: Kshform-check-input-width;
+    margin-top: (Kshline-height-base - Kshform-check-input-width) / 2; // line-height minus check height
+    vertical-align: top;
+    background-color: Kshform-check-input-bg;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: Kshform-check-input-border;
+    appearance: none;
+    color-adjust: exact; // Keep themed appearance for print
+    @include transition(Kshform-check-transition);
+    &[type="checkbox"] {
+        @include border-radius(Kshform-check-input-border-radius);
+    }
+    &[type="radio"] {
+        // stylelint-disable-next-line property-disallowed-list
+        border-radius: Kshform-check-radio-border-radius;
+    }
+    &:active {
+        filter: Kshform-check-input-active-filter;
+    }
+    &:focus {
+        border-color: Kshform-check-input-focus-border;
+        outline: 0;
+        box-shadow: Kshform-check-input-focus-box-shadow;
+    }
+    &:checked {
+        background-color: Kshform-check-input-checked-bg-color;
+        border-color: Kshform-check-input-checked-border-color;
+        &[type="checkbox"] {
+            @if Kshenable-gradients {
+                background-image: escape-svg(Kshform-check-input-checked-bg-image),
+                var(--#{Kshvariable-prefix}gradient);
+            }
+            @else {
+                background-image: escape-svg(Kshform-check-input-checked-bg-image);
+            }
+        }
+        &[type="radio"] {
+            @if Kshenable-gradients {
+                background-image: escape-svg(Kshform-check-radio-checked-bg-image),
+                var(--#{Kshvariable-prefix}gradient);
+            }
+            @else {
+                background-image: escape-svg(Kshform-check-radio-checked-bg-image);
+            }
+        }
+    }
+    &[type="checkbox"]:indeterminate {
+        background-color: Kshform-check-input-indeterminate-bg-color;
+        border-color: Kshform-check-input-indeterminate-border-color;
+        @if Kshenable-gradients {
+            background-image: escape-svg(Kshform-check-input-indeterminate-bg-image),
+            var(--#{Kshvariable-prefix}gradient);
+        }
+        @else {
+            background-image: escape-svg(Kshform-check-input-indeterminate-bg-image);
+        }
+    }
+    &:disabled {
+        pointer-events: none;
+        filter: none;
+        opacity: Kshform-check-input-disabled-opacity;
+    }
+    // Use disabled attribute in addition of :disabled pseudo-class
+    // See: https://github.com/twbs/bootstrap/issues/28247
+    &[disabled],
+    &:disabled {
+        ~.form-check-label {
+            opacity: Kshform-check-label-disabled-opacity;
+        }
+    }
+}
+
+.form-check-label {
+    color: Kshform-check-label-color;
+    cursor: Kshform-check-label-cursor;
+}
+
+//
+// Switch
+//
+.form-switch {
+    padding-left: Kshform-switch-padding-start;
+    .form-check-input {
+        width: Kshform-switch-width;
+        margin-left: Kshform-switch-padding-start * -1;
+        background-image: escape-svg(Kshform-switch-bg-image);
+        background-position: left center;
+        @include border-radius(Kshform-switch-border-radius);
+        @include transition(Kshform-switch-transition);
+        &:focus {
+            background-image: escape-svg(Kshform-switch-focus-bg-image);
+        }
+        &:checked {
+            background-position: Kshform-switch-checked-bg-position;
+            @if Kshenable-gradients {
+                background-image: escape-svg(Kshform-switch-checked-bg-image),
+                var(--#{Kshvariable-prefix}gradient);
+            }
+            @else {
+                background-image: escape-svg(Kshform-switch-checked-bg-image);
+            }
+        }
+    }
+}
+
+.form-check-inline {
+    display: inline-block;
+    margin-right: Kshform-check-inline-margin-end;
+}
+
+.btn-check {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    &[disabled],
+    &:disabled {
+        +.btn {
+            pointer-events: none;
+            filter: none;
+            opacity: Kshform-check-btn-check-disabled-opacity;
+        }
+    }
+}

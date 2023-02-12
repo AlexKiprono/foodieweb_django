@@ -1,0 +1,16 @@
+@mixin box-shadow(Kshshadow...) {
+    @if Kshenable-shadows {
+        Kshresult: ();
+        @each Kshvalue in Kshshadow {
+            @if Kshvalue !=null {
+                Kshresult: append(Kshresult, Kshvalue, "comma");
+            }
+            @if Kshvalue==none and length(Kshshadow)>1 {
+                @warn "The keyword 'none' must be used as a single argument.";
+            }
+        }
+        @if (length(Kshresult) > 0) {
+            box-shadow: Kshresult;
+        }
+    }
+}

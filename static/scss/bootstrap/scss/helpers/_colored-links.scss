@@ -1,0 +1,12 @@
+@each Kshcolor,
+Kshvalue in Kshtheme-colors {
+    .link-#{Kshcolor} {
+        color: Kshvalue;
+        @if Kshlink-shade-percentage !=0 {
+            &:hover,
+            &:focus {
+                color: if(color-contrast(Kshvalue)==Kshcolor-contrast-light, shade-color(Kshvalue, Kshlink-shade-percentage), tint-color(Kshvalue, Kshlink-shade-percentage));
+            }
+        }
+    }
+}

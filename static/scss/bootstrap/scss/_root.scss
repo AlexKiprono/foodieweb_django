@@ -1,0 +1,16 @@
+:root {
+    // Custom variable values only support SassScript inside `#{}`.
+    @each Kshcolor,
+    Kshvalue in Kshcolors {
+        --#{Kshvariable-prefix}#{Kshcolor}: #{Kshvalue};
+    }
+    @each Kshcolor,
+    Kshvalue in Kshtheme-colors {
+        --#{Kshvariable-prefix}#{Kshcolor}: #{Kshvalue};
+    }
+    // Use `inspect` for lists so that quoted items keep the quotes.
+    // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
+    --#{Kshvariable-prefix}font-sans-serif: #{inspect(Kshfont-family-sans-serif)};
+    --#{Kshvariable-prefix}font-monospace: #{inspect(Kshfont-family-monospace)};
+    --#{Kshvariable-prefix}gradient: #{Kshgradient};
+}

@@ -1,0 +1,79 @@
+// stylelint-disable property-disallowed-list
+// Single side border-radius
+// Helper function to replace negative values with 0
+@function valid-radius(Kshradius) {
+    Kshreturn: ();
+    @each Kshvalue in Kshradius {
+        @if type-of(Kshvalue)==number {
+            Kshreturn: append(Kshreturn, max(Kshvalue, 0));
+        }
+        @else {
+            Kshreturn: append(Kshreturn, Kshvalue);
+        }
+    }
+    @return Kshreturn;
+}
+
+// scss-docs-start border-radius-mixins
+@mixin border-radius(Kshradius: Kshborder-radius, Kshfallback-border-radius: false) {
+    @if Kshenable-rounded {
+        border-radius: valid-radius(Kshradius);
+    }
+    @else if Kshfallback-border-radius !=false {
+        border-radius: Kshfallback-border-radius;
+    }
+}
+
+@mixin border-top-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-top-left-radius: valid-radius(Kshradius);
+        border-top-right-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-end-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-top-right-radius: valid-radius(Kshradius);
+        border-bottom-right-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-bottom-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-bottom-right-radius: valid-radius(Kshradius);
+        border-bottom-left-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-start-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-top-left-radius: valid-radius(Kshradius);
+        border-bottom-left-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-top-start-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-top-left-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-top-end-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-top-right-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-bottom-end-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-bottom-right-radius: valid-radius(Kshradius);
+    }
+}
+
+@mixin border-bottom-start-radius(Kshradius: Kshborder-radius) {
+    @if Kshenable-rounded {
+        border-bottom-left-radius: valid-radius(Kshradius);
+    }
+}
+
+// scss-docs-end border-radius-mixins

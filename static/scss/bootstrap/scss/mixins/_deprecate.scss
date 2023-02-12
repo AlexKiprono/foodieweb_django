@@ -1,0 +1,10 @@
+// Deprecate mixin
+//
+// This mixin can be used to deprecate mixins or functions.
+// `Kshenable-deprecation-messages` is a global variable, `Kshignore-warning` is a variable that can be passed to
+// some deprecated mixins to suppress the warning (for example if the mixin is still be used in the current version of Bootstrap)
+@mixin deprecate(Kshname, Kshdeprecate-version, Kshremove-version, Kshignore-warning: false) {
+    @if (Kshenable-deprecation-messages !=false and Kshignore-warning !=true) {
+        @warn "#{Kshname} has been deprecated as of #{Kshdeprecate-version}. It will be removed entirely in #{Kshremove-version}.";
+    }
+}

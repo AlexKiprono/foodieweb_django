@@ -1,0 +1,194 @@
+//
+// Base styles
+//
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+    height: Kshcard-height;
+    word-wrap: break-word;
+    background-color: Kshcard-bg;
+    background-clip: border-box;
+    border: Kshcard-border-width solid Kshcard-border-color;
+    @include border-radius(Kshcard-border-radius);
+    >hr {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    >.list-group {
+        border-top: inherit;
+        border-bottom: inherit;
+        &:first-child {
+            border-top-width: 0;
+            @include border-top-radius(Kshcard-inner-border-radius);
+        }
+        &:last-child {
+            border-bottom-width: 0;
+            @include border-bottom-radius(Kshcard-inner-border-radius);
+        }
+    }
+    // Due to specificity of the above selector (`.card > .list-group`), we must
+    // use a child selector here to prevent double borders.
+    >.card-header+.list-group,
+    >.list-group+.card-footer {
+        border-top: 0;
+    }
+}
+
+.card-body {
+    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+    // as much space as possible, ensuring footers are aligned to the bottom.
+    flex: 1 1 auto;
+    padding: Kshcard-spacer-y Kshcard-spacer-x;
+    color: Kshcard-color;
+}
+
+.card-title {
+    margin-bottom: Kshcard-title-spacer-y;
+}
+
+.card-subtitle {
+    margin-top: -Kshcard-title-spacer-y / 2;
+    margin-bottom: 0;
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+}
+
+.card-link {
+    &:hover {
+        text-decoration: none;
+    }
+    +.card-link {
+        margin-left: Kshcard-spacer-x;
+    }
+}
+
+//
+// Optional textual caps
+//
+.card-header {
+    padding: Kshcard-cap-padding-y Kshcard-cap-padding-x;
+    margin-bottom: 0; // Removes the default margin-bottom of <hN>
+    color: Kshcard-cap-color;
+    background-color: Kshcard-cap-bg;
+    border-bottom: Kshcard-border-width solid Kshcard-border-color;
+    &:first-child {
+        @include border-radius(Kshcard-inner-border-radius Kshcard-inner-border-radius 0 0);
+    }
+}
+
+.card-footer {
+    padding: Kshcard-cap-padding-y Kshcard-cap-padding-x;
+    color: Kshcard-cap-color;
+    background-color: Kshcard-cap-bg;
+    border-top: Kshcard-border-width solid Kshcard-border-color;
+    &:last-child {
+        @include border-radius(0 0 Kshcard-inner-border-radius Kshcard-inner-border-radius);
+    }
+}
+
+//
+// Header navs
+//
+.card-header-tabs {
+    margin-right: -Kshcard-cap-padding-x / 2;
+    margin-bottom: -Kshcard-cap-padding-y;
+    margin-left: -Kshcard-cap-padding-x / 2;
+    border-bottom: 0;
+    @if Kshnav-tabs-link-active-bg !=Kshcard-bg {
+        .nav-link.active {
+            background-color: Kshcard-bg;
+            border-bottom-color: Kshcard-bg;
+        }
+    }
+}
+
+.card-header-pills {
+    margin-right: -Kshcard-cap-padding-x / 2;
+    margin-left: -Kshcard-cap-padding-x / 2;
+}
+
+// Card image
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: Kshcard-img-overlay-padding;
+    @include border-radius(Kshcard-inner-border-radius);
+}
+
+.card-img,
+.card-img-top,
+.card-img-bottom {
+    width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+}
+
+.card-img,
+.card-img-top {
+    @include border-top-radius(Kshcard-inner-border-radius);
+}
+
+.card-img,
+.card-img-bottom {
+    @include border-bottom-radius(Kshcard-inner-border-radius);
+}
+
+//
+// Card groups
+//
+.card-group {
+    // The child selector allows nested `.card` within `.card-group`
+    // to display properly.
+    >.card {
+        margin-bottom: Kshcard-group-margin;
+    }
+    @include media-breakpoint-up(sm) {
+        display: flex;
+        flex-flow: row wrap;
+        // The child selector allows nested `.card` within `.card-group`
+        // to display properly.
+        >.card {
+            // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+            flex: 1 0 0%;
+            margin-bottom: 0;
+            +.card {
+                margin-left: 0;
+                border-left: 0;
+            }
+            // Handle rounded corners
+            @if Kshenable-rounded {
+                &:not(:last-child) {
+                    @include border-end-radius(0);
+                    .card-img-top,
+                    .card-header {
+                        // stylelint-disable-next-line property-disallowed-list
+                        border-top-right-radius: 0;
+                    }
+                    .card-img-bottom,
+                    .card-footer {
+                        // stylelint-disable-next-line property-disallowed-list
+                        border-bottom-right-radius: 0;
+                    }
+                }
+                &:not(:first-child) {
+                    @include border-start-radius(0);
+                    .card-img-top,
+                    .card-header {
+                        // stylelint-disable-next-line property-disallowed-list
+                        border-top-left-radius: 0;
+                    }
+                    .card-img-bottom,
+                    .card-footer {
+                        // stylelint-disable-next-line property-disallowed-list
+                        border-bottom-left-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+}

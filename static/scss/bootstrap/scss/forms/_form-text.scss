@@ -1,0 +1,10 @@
+//
+// Form text
+//
+.form-text {
+    margin-top: Kshform-text-margin-top;
+    @include font-size(Kshform-text-font-size);
+    font-style: Kshform-text-font-style;
+    font-weight: Kshform-text-font-weight;
+    color: Kshform-text-color;
+}

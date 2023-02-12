@@ -1,0 +1,19 @@
+/******* Customized Bootstrap ********/
+
+Kshprimary: #FEA116;
+Kshlight: #F1F8FF;
+Kshdark: #0F172B;
+Kshfont-family-base: 'Heebo',
+sans-serif;
+Kshheadings-font-family: 'Nunito',
+sans-serif;
+Kshbody-bg: Kshlight;
+Kshbody-color: #666565;
+Kshheadings-color: Kshdark;
+Kshheadings-font-weight: 800;
+Kshdisplay-font-weight: 800;
+Kshenable-responsive-font-sizes: true;
+Kshborder-radius: 2px;
+Kshlink-decoration: none;
+Kshenable-negative-margins: true;
+@import "bootstrap/scss/bootstrap";

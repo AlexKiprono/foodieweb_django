@@ -1,0 +1,35 @@
+//
+// Labels
+//
+.form-label {
+    margin-bottom: Kshform-label-margin-bottom;
+    @include font-size(Kshform-label-font-size);
+    font-style: Kshform-label-font-style;
+    font-weight: Kshform-label-font-weight;
+    color: Kshform-label-color;
+}
+
+// For use with horizontal and inline forms, when you need the label (or legend)
+// text to align with the form controls.
+.col-form-label {
+    padding-top: add(Kshinput-padding-y, Kshinput-border-width);
+    padding-bottom: add(Kshinput-padding-y, Kshinput-border-width);
+    margin-bottom: 0; // Override the `<legend>` default
+    @include font-size(inherit); // Override the `<legend>` default
+    font-style: Kshform-label-font-style;
+    font-weight: Kshform-label-font-weight;
+    line-height: Kshinput-line-height;
+    color: Kshform-label-color;
+}
+
+.col-form-label-lg {
+    padding-top: add(Kshinput-padding-y-lg, Kshinput-border-width);
+    padding-bottom: add(Kshinput-padding-y-lg, Kshinput-border-width);
+    @include font-size(Kshinput-font-size-lg);
+}
+
+.col-form-label-sm {
+    padding-top: add(Kshinput-padding-y-sm, Kshinput-border-width);
+    padding-bottom: add(Kshinput-padding-y-sm, Kshinput-border-width);
+    @include font-size(Kshinput-font-size-sm);
+}

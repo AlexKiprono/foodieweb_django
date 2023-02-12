@@ -1,0 +1,82 @@
+// Range
+//
+// Style range inputs the same across browsers. Vendor-specific rules for pseudo
+// elements cannot be mixed. As such, there are no shared styles for focus or
+// active states on prefixed selectors.
+.form-range {
+    width: 100%;
+    height: add(Kshform-range-thumb-height, Kshform-range-thumb-focus-box-shadow-width * 2);
+    padding: 0; // Need to reset padding
+    background-color: transparent;
+    appearance: none;
+    &:focus {
+        outline: 0;
+        // Pseudo-elements must be split across multiple rulesets to have an effect.
+        // No box-shadow() mixin for focus accessibility.
+        &::-webkit-slider-thumb {
+            box-shadow: Kshform-range-thumb-focus-box-shadow;
+        }
+        &::-moz-range-thumb {
+            box-shadow: Kshform-range-thumb-focus-box-shadow;
+        }
+    }
+    &::-moz-focus-outer {
+        border: 0;
+    }
+    &::-webkit-slider-thumb {
+        width: Kshform-range-thumb-width;
+        height: Kshform-range-thumb-height;
+        margin-top: (Kshform-range-track-height - Kshform-range-thumb-height) / 2; // Webkit specific
+        @include gradient-bg(Kshform-range-thumb-bg);
+        border: Kshform-range-thumb-border;
+        @include border-radius(Kshform-range-thumb-border-radius);
+        @include box-shadow(Kshform-range-thumb-box-shadow);
+        @include transition(Kshform-range-thumb-transition);
+        appearance: none;
+        &:active {
+            @include gradient-bg(Kshform-range-thumb-active-bg);
+        }
+    }
+    &::-webkit-slider-runnable-track {
+        width: Kshform-range-track-width;
+        height: Kshform-range-track-height;
+        color: transparent; // Why?
+        cursor: Kshform-range-track-cursor;
+        background-color: Kshform-range-track-bg;
+        border-color: transparent;
+        @include border-radius(Kshform-range-track-border-radius);
+        @include box-shadow(Kshform-range-track-box-shadow);
+    }
+    &::-moz-range-thumb {
+        width: Kshform-range-thumb-width;
+        height: Kshform-range-thumb-height;
+        @include gradient-bg(Kshform-range-thumb-bg);
+        border: Kshform-range-thumb-border;
+        @include border-radius(Kshform-range-thumb-border-radius);
+        @include box-shadow(Kshform-range-thumb-box-shadow);
+        @include transition(Kshform-range-thumb-transition);
+        appearance: none;
+        &:active {
+            @include gradient-bg(Kshform-range-thumb-active-bg);
+        }
+    }
+    &::-moz-range-track {
+        width: Kshform-range-track-width;
+        height: Kshform-range-track-height;
+        color: transparent;
+        cursor: Kshform-range-track-cursor;
+        background-color: Kshform-range-track-bg;
+        border-color: transparent; // Firefox specific?
+        @include border-radius(Kshform-range-track-border-radius);
+        @include box-shadow(Kshform-range-track-box-shadow);
+    }
+    &:disabled {
+        pointer-events: none;
+        &::-webkit-slider-thumb {
+            background-color: Kshform-range-thumb-disabled-bg;
+        }
+        &::-moz-range-thumb {
+            background-color: Kshform-range-thumb-disabled-bg;
+        }
+    }
+}

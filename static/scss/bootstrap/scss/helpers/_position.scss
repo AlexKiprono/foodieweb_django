@@ -1,0 +1,28 @@
+// Shorthand
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: Kshzindex-fixed;
+}
+
+.fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: Kshzindex-fixed;
+}
+
+// Responsive sticky top
+@each Kshbreakpoint in map-keys(Kshgrid-breakpoints) {
+    @include media-breakpoint-up(Kshbreakpoint) {
+        Kshinfix: breakpoint-infix(Kshbreakpoint, Kshgrid-breakpoints);
+        .sticky#{Kshinfix}-top {
+            position: sticky;
+            top: 0;
+            z-index: Kshzindex-sticky;
+        }
+    }
+}

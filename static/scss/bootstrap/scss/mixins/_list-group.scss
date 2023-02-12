@@ -1,0 +1,22 @@
+// List Groups
+// scss-docs-start list-group-mixin
+@mixin list-group-item-variant(Kshstate, Kshbackground, Kshcolor) {
+    .list-group-item-#{Kshstate} {
+        color: Kshcolor;
+        background-color: Kshbackground;
+        &.list-group-item-action {
+            &:hover,
+            &:focus {
+                color: Kshcolor;
+                background-color: shade-color(Kshbackground, 10%);
+            }
+            &.active {
+                color: Kshwhite;
+                background-color: Kshcolor;
+                border-color: Kshcolor;
+            }
+        }
+    }
+}
+
+// scss-docs-end list-group-mixin

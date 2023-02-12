@@ -1,0 +1,131 @@
+//
+// Basic Bootstrap table
+//
+.table {
+    --#{Kshvariable-prefix}table-bg: #{Kshtable-bg};
+    --#{Kshvariable-prefix}table-striped-color: #{Kshtable-striped-color};
+    --#{Kshvariable-prefix}table-striped-bg: #{Kshtable-striped-bg};
+    --#{Kshvariable-prefix}table-active-color: #{Kshtable-active-color};
+    --#{Kshvariable-prefix}table-active-bg: #{Kshtable-active-bg};
+    --#{Kshvariable-prefix}table-hover-color: #{Kshtable-hover-color};
+    --#{Kshvariable-prefix}table-hover-bg: #{Kshtable-hover-bg};
+    width: 100%;
+    margin-bottom: Kshspacer;
+    color: Kshtable-color;
+    vertical-align: Kshtable-cell-vertical-align;
+    border-color: Kshtable-border-color;
+    // Target th & td
+    // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
+    // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
+    // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
+    // stylelint-disable-next-line selector-max-universal
+    > :not(caption)>*>* {
+        padding: Kshtable-cell-padding-y Kshtable-cell-padding-x;
+        background-color: var(--#{Kshvariable-prefix}table-bg);
+        border-bottom-width: Kshtable-border-width;
+        box-shadow: inset 0 0 0 9999px var(--#{Kshvariable-prefix}table-accent-bg);
+    }
+    >tbody {
+        vertical-align: inherit;
+    }
+    >thead {
+        vertical-align: bottom;
+    }
+    // Highlight border color between thead, tbody and tfoot.
+    > :not(:last-child)> :last-child>* {
+        border-bottom-color: Kshtable-group-separator-color;
+    }
+}
+
+//
+// Change placement of captions with a class
+//
+.caption-top {
+    caption-side: top;
+}
+
+//
+// Condensed table w/ half padding
+//
+.table-sm {
+    // stylelint-disable-next-line selector-max-universal
+    > :not(caption)>*>* {
+        padding: Kshtable-cell-padding-y-sm Kshtable-cell-padding-x-sm;
+    }
+}
+
+// Border versions
+//
+// Add or remove borders all around the table and between all the columns.
+//
+// When borders are added on all sides of the cells, the corners can render odd when
+// these borders do not have the same color or if they are semi-transparent.
+// Therefor we add top and border bottoms to the `tr`s and left and right borders
+// to the `td`s or `th`s
+.table-bordered {
+    > :not(caption)>* {
+        border-width: Kshtable-border-width 0;
+        // stylelint-disable-next-line selector-max-universal
+        >* {
+            border-width: 0 Kshtable-border-width;
+        }
+    }
+}
+
+.table-borderless {
+    // stylelint-disable-next-line selector-max-universal
+    > :not(caption)>*>* {
+        border-bottom-width: 0;
+    }
+}
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped {
+    >tbody>tr:nth-of-type(#{Kshtable-striped-order}) {
+        --#{Kshvariable-prefix}table-accent-bg: var(--#{Kshvariable-prefix}table-striped-bg);
+        color: var(--#{Kshvariable-prefix}table-striped-color);
+    }
+}
+
+// Active table
+//
+// The `.table-active` class can be added to highlight rows or cells
+.table-active {
+    --#{Kshvariable-prefix}table-accent-bg: var(--#{Kshvariable-prefix}table-active-bg);
+    color: var(--#{Kshvariable-prefix}table-active-color);
+}
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+.table-hover {
+    >tbody>tr:hover {
+        --#{Kshvariable-prefix}table-accent-bg: var(--#{Kshvariable-prefix}table-hover-bg);
+        color: var(--#{Kshvariable-prefix}table-hover-color);
+    }
+}
+
+// Table variants
+//
+// Table variants set the table cell backgrounds, border colors
+// and the colors of the striped, hovered & active tables
+@each Kshcolor,
+Kshvalue in Kshtable-variants {
+    @include table-variant(Kshcolor, Kshvalue);
+}
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+@each Kshbreakpoint in map-keys(Kshgrid-breakpoints) {
+    Kshinfix: breakpoint-infix(Kshbreakpoint, Kshgrid-breakpoints);
+    @include media-breakpoint-down(Kshbreakpoint) {
+        .table-responsive#{Kshinfix} {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+}

@@ -1,0 +1,146 @@
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0 #{"/* rtl:ignore */"};
+    z-index: Kshzindex-popover;
+    display: block;
+    max-width: Kshpopover-max-width;
+    // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+    // So reset our font and text properties to avoid inheriting weird values.
+    @include reset-text();
+    @include font-size(Kshpopover-font-size);
+    // Allow breaking very long words so they don't overflow the popover's bounds
+    word-wrap: break-word;
+    background-color: Kshpopover-bg;
+    background-clip: padding-box;
+    border: Kshpopover-border-width solid Kshpopover-border-color;
+    @include border-radius(Kshpopover-border-radius);
+    @include box-shadow(Kshpopover-box-shadow);
+    .popover-arrow {
+        position: absolute;
+        display: block;
+        width: Kshpopover-arrow-width;
+        height: Kshpopover-arrow-height;
+        &::before,
+        &::after {
+            position: absolute;
+            display: block;
+            content: "";
+            border-color: transparent;
+            border-style: solid;
+        }
+    }
+}
+
+.bs-popover-top {
+    >.popover-arrow {
+        bottom: subtract(-Kshpopover-arrow-height, Kshpopover-border-width);
+        &::before {
+            bottom: 0;
+            border-width: Kshpopover-arrow-height (Kshpopover-arrow-width / 2) 0;
+            border-top-color: Kshpopover-arrow-outer-color;
+        }
+        &::after {
+            bottom: Kshpopover-border-width;
+            border-width: Kshpopover-arrow-height (Kshpopover-arrow-width / 2) 0;
+            border-top-color: Kshpopover-arrow-color;
+        }
+    }
+}
+
+.bs-popover-end {
+    >.popover-arrow {
+        left: subtract(-Kshpopover-arrow-height, Kshpopover-border-width);
+        width: Kshpopover-arrow-height;
+        height: Kshpopover-arrow-width;
+        &::before {
+            left: 0;
+            border-width: (Kshpopover-arrow-width / 2) Kshpopover-arrow-height (Kshpopover-arrow-width / 2) 0;
+            border-right-color: Kshpopover-arrow-outer-color;
+        }
+        &::after {
+            left: Kshpopover-border-width;
+            border-width: (Kshpopover-arrow-width / 2) Kshpopover-arrow-height (Kshpopover-arrow-width / 2) 0;
+            border-right-color: Kshpopover-arrow-color;
+        }
+    }
+}
+
+.bs-popover-bottom {
+    >.popover-arrow {
+        top: subtract(-Kshpopover-arrow-height, Kshpopover-border-width);
+        &::before {
+            top: 0;
+            border-width: 0 (Kshpopover-arrow-width / 2) Kshpopover-arrow-height (Kshpopover-arrow-width / 2);
+            border-bottom-color: Kshpopover-arrow-outer-color;
+        }
+        &::after {
+            top: Kshpopover-border-width;
+            border-width: 0 (Kshpopover-arrow-width / 2) Kshpopover-arrow-height (Kshpopover-arrow-width / 2);
+            border-bottom-color: Kshpopover-arrow-color;
+        }
+    }
+    // This will remove the popover-header's border just below the arrow
+    .popover-header::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        display: block;
+        width: Kshpopover-arrow-width;
+        margin-left: -Kshpopover-arrow-width / 2;
+        content: "";
+        border-bottom: Kshpopover-border-width solid Kshpopover-header-bg;
+    }
+}
+
+.bs-popover-start {
+    >.popover-arrow {
+        right: subtract(-Kshpopover-arrow-height, Kshpopover-border-width);
+        width: Kshpopover-arrow-height;
+        height: Kshpopover-arrow-width;
+        &::before {
+            right: 0;
+            border-width: (Kshpopover-arrow-width / 2) 0 (Kshpopover-arrow-width / 2) Kshpopover-arrow-height;
+            border-left-color: Kshpopover-arrow-outer-color;
+        }
+        &::after {
+            right: Kshpopover-border-width;
+            border-width: (Kshpopover-arrow-width / 2) 0 (Kshpopover-arrow-width / 2) Kshpopover-arrow-height;
+            border-left-color: Kshpopover-arrow-color;
+        }
+    }
+}
+
+.bs-popover-auto {
+    &[data-popper-placement^="top"] {
+        @extend .bs-popover-top;
+    }
+    &[data-popper-placement^="right"] {
+        @extend .bs-popover-end;
+    }
+    &[data-popper-placement^="bottom"] {
+        @extend .bs-popover-bottom;
+    }
+    &[data-popper-placement^="left"] {
+        @extend .bs-popover-start;
+    }
+}
+
+// Offset the popover to account for the popover arrow
+.popover-header {
+    padding: Kshpopover-header-padding-y Kshpopover-header-padding-x;
+    margin-bottom: 0; // Reset the default from Reboot
+    @include font-size(Kshfont-size-base);
+    color: Kshpopover-header-color;
+    background-color: Kshpopover-header-bg;
+    border-bottom: Kshpopover-border-width solid shade-color(Kshpopover-header-bg, 10%);
+    @include border-top-radius(Kshpopover-inner-border-radius);
+    &:empty {
+        display: none;
+    }
+}
+
+.popover-body {
+    padding: Kshpopover-body-padding-y Kshpopover-body-padding-x;
+    color: Kshpopover-body-color;
+}

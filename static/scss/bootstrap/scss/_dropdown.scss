@@ -1,0 +1,217 @@
+// The dropdown wrapper (`<div>`)
+.dropup,
+.dropend,
+.dropdown,
+.dropstart {
+    position: relative;
+}
+
+.dropdown-toggle {
+    white-space: nowrap;
+    // Generate the caret automatically
+    @include caret();
+}
+
+// The dropdown menu
+.dropdown-menu {
+    position: absolute;
+    z-index: Kshzindex-dropdown;
+    display: none; // none by default, but block on "open" of the menu
+    min-width: Kshdropdown-min-width;
+    padding: Kshdropdown-padding-y Kshdropdown-padding-x;
+    margin: 0; // Override default margin of ul
+    @include font-size(Kshdropdown-font-size);
+    color: Kshdropdown-color;
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-color: Kshdropdown-bg;
+    background-clip: padding-box;
+    border: Kshdropdown-border-width solid Kshdropdown-border-color;
+    @include border-radius(Kshdropdown-border-radius);
+    @include box-shadow(Kshdropdown-box-shadow);
+    &[data-bs-popper] {
+        top: 100%;
+        left: 0;
+        margin-top: Kshdropdown-spacer;
+    }
+}
+
+// scss-docs-start responsive-breakpoints
+// We deliberately hardcode the `bs-` prefix because we check
+// this custom property in JS to determine Popper's positioning
+@each Kshbreakpoint in map-keys(Kshgrid-breakpoints) {
+    @include media-breakpoint-up(Kshbreakpoint) {
+        Kshinfix: breakpoint-infix(Kshbreakpoint, Kshgrid-breakpoints);
+        .dropdown-menu#{Kshinfix}-start {
+            --bs-position: start;
+            &[data-bs-popper] {
+                right: auto #{"/* rtl:ignore */"};
+                left: 0 #{"/* rtl:ignore */"};
+            }
+        }
+        .dropdown-menu#{Kshinfix}-end {
+            --bs-position: end;
+            &[data-bs-popper] {
+                right: 0 #{"/* rtl:ignore */"};
+                left: auto #{"/* rtl:ignore */"};
+            }
+        }
+    }
+}
+
+// scss-docs-end responsive-breakpoints
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
+.dropup {
+    .dropdown-menu[data-bs-popper] {
+        top: auto;
+        bottom: 100%;
+        margin-top: 0;
+        margin-bottom: Kshdropdown-spacer;
+    }
+    .dropdown-toggle {
+        @include caret(up);
+    }
+}
+
+.dropend {
+    .dropdown-menu[data-bs-popper] {
+        top: 0;
+        right: auto;
+        left: 100%;
+        margin-top: 0;
+        margin-left: Kshdropdown-spacer;
+    }
+    .dropdown-toggle {
+        @include caret(end);
+        &::after {
+            vertical-align: 0;
+        }
+    }
+}
+
+.dropstart {
+    .dropdown-menu[data-bs-popper] {
+        top: 0;
+        right: 100%;
+        left: auto;
+        margin-top: 0;
+        margin-right: Kshdropdown-spacer;
+    }
+    .dropdown-toggle {
+        @include caret(start);
+        &::before {
+            vertical-align: 0;
+        }
+    }
+}
+
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+    height: 0;
+    margin: Kshdropdown-divider-margin-y 0;
+    overflow: hidden;
+    border-top: 1px solid Kshdropdown-divider-bg;
+}
+
+// Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// For <button>s`
+.dropdown-item {
+    display: block;
+    width: 100%; // For `<button>`s
+    padding: Kshdropdown-item-padding-y Kshdropdown-item-padding-x;
+    clear: both;
+    font-weight: Kshfont-weight-normal;
+    color: Kshdropdown-link-color;
+    text-align: inherit; // For `<button>`s
+    text-decoration: if(Kshlink-decoration==none, null, none);
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+    background-color: transparent; // For `<button>`s
+    border: 0; // For `<button>`s
+    // Prevent dropdown overflow if there's no padding
+    // See https://github.com/twbs/bootstrap/pull/27703
+    @if Kshdropdown-padding-y==0 {
+        &:first-child {
+            @include border-top-radius(Kshdropdown-inner-border-radius);
+        }
+        &:last-child {
+            @include border-bottom-radius(Kshdropdown-inner-border-radius);
+        }
+    }
+    &:hover,
+    &:focus {
+        color: Kshdropdown-link-hover-color;
+        text-decoration: if(Kshlink-hover-decoration==underline, none, null);
+        @include gradient-bg(Kshdropdown-link-hover-bg);
+    }
+    &.active,
+    &:active {
+        color: Kshdropdown-link-active-color;
+        text-decoration: none;
+        @include gradient-bg(Kshdropdown-link-active-bg);
+    }
+    &.disabled,
+    &:disabled {
+        color: Kshdropdown-link-disabled-color;
+        pointer-events: none;
+        background-color: transparent;
+        // Remove CSS gradients if they're enabled
+        background-image: if(Kshenable-gradients, none, null);
+    }
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+// Dropdown section headers
+.dropdown-header {
+    display: block;
+    padding: Kshdropdown-header-padding;
+    margin-bottom: 0; // for use with heading elements
+    @include font-size(Kshfont-size-sm);
+    color: Kshdropdown-header-color;
+    white-space: nowrap; // as with > li > a
+}
+
+// Dropdown text
+.dropdown-item-text {
+    display: block;
+    padding: Kshdropdown-item-padding-y Kshdropdown-item-padding-x;
+    color: Kshdropdown-link-color;
+}
+
+// Dark dropdowns
+.dropdown-menu-dark {
+    color: Kshdropdown-dark-color;
+    background-color: Kshdropdown-dark-bg;
+    border-color: Kshdropdown-dark-border-color;
+    @include box-shadow(Kshdropdown-dark-box-shadow);
+    .dropdown-item {
+        color: Kshdropdown-dark-link-color;
+        &:hover,
+        &:focus {
+            color: Kshdropdown-dark-link-hover-color;
+            @include gradient-bg(Kshdropdown-dark-link-hover-bg);
+        }
+        &.active,
+        &:active {
+            color: Kshdropdown-dark-link-active-color;
+            @include gradient-bg(Kshdropdown-dark-link-active-bg);
+        }
+        &.disabled,
+        &:disabled {
+            color: Kshdropdown-dark-link-disabled-color;
+        }
+    }
+    .dropdown-divider {
+        border-color: Kshdropdown-dark-divider-bg;
+    }
+    .dropdown-item-text {
+        color: Kshdropdown-dark-link-color;
+    }
+    .dropdown-header {
+        color: Kshdropdown-dark-header-color;
+    }
+}

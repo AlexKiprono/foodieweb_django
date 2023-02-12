@@ -1,0 +1,57 @@
+// Utility generator
+// Used to generate utilities & print utilities
+@mixin generate-utility(Kshutility, Kshinfix, Kshis-rfs-media-query: false) {
+    Kshvalues: map-get(Kshutility, values);
+    // If the values are a list or string, convert it into a map
+    @if type-of(Kshvalues)=="string" or type-of(nth(Kshvalues, 1)) !="list" {
+        Kshvalues: zip(Kshvalues, Kshvalues);
+    }
+    @each Kshkey,
+    Kshvalue in Kshvalues {
+        Kshproperties: map-get(Kshutility, property);
+        // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+        @if type-of(Kshproperties)=="string" {
+            Kshproperties: append((), Kshproperties);
+        }
+        // Use custom class if present
+        Kshproperty-class: if(map-has-key(Kshutility, class), map-get(Kshutility, class), nth(Kshproperties, 1));
+        Kshproperty-class: if(Kshproperty-class==null, "", Kshproperty-class);
+        // State params to generate pseudo-classes
+        Kshstate: if(map-has-key(Kshutility, state), map-get(Kshutility, state), ());
+        Kshinfix: if(Kshproperty-class=="" and str-slice(Kshinfix, 1, 1)=="-", str-slice(Kshinfix, 2), Kshinfix);
+        // Don't prefix if value key is null (eg. with shadow class)
+        Kshproperty-class-modifier: if(Kshkey, if(Kshproperty-class=="" and Kshinfix=="", "", "-") + Kshkey, "");
+        @if map-get(Kshutility, rfs) {
+            // Inside the media query
+            @if Kshis-rfs-media-query {
+                Kshval: rfs-value(Kshvalue);
+                // Do not render anything if fluid and non fluid values are the same
+                Kshvalue: if(Kshval==rfs-fluid-value(Kshvalue), null, Kshval);
+            }
+            @else {
+                Kshvalue: rfs-fluid-value(Kshvalue);
+            }
+        }
+        Kshis-rtl: map-get(Kshutility, rtl);
+        @if Kshvalue !=null {
+            @if Kshis-rtl==false {
+                /* rtl:begin:remove */
+            }
+            .#{Kshproperty-class + Kshinfix + Kshproperty-class-modifier} {
+                @each Kshproperty in Kshproperties {
+                    #{Kshproperty}: Kshvalue if(Kshenable-important-utilities, !important, null);
+                }
+            }
+            @each Kshpseudo in Kshstate {
+                .#{Kshproperty-class + Kshinfix + Kshproperty-class-modifier}-#{Kshpseudo}:#{Kshpseudo} {
+                    @each Kshproperty in Kshproperties {
+                        #{Kshproperty}: Kshvalue if(Kshenable-important-utilities, !important, null);
+                    }
+                }
+            }
+            @if Kshis-rtl==false {
+                /* rtl:end:remove */
+            }
+        }
+    }
+}

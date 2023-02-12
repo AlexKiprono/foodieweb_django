@@ -1,0 +1,117 @@
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+// scss-docs-start form-validation-mixins
+@mixin form-validation-state-selector(Kshstate) {
+    @if (Kshstate=="valid" or Kshstate=="invalid") {
+        .was-validated #{if(&, "&", "")}:#{Kshstate},
+        #{if(&, "&", "")}.is-#{Kshstate} {
+            @content;
+        }
+    }
+    @else {
+        #{if(&, "&", "")}.is-#{Kshstate} {
+            @content;
+        }
+    }
+}
+
+@mixin form-validation-state( Kshstate, Kshcolor, Kshicon, Kshtooltip-color: color-contrast(Kshcolor), Kshtooltip-bg-color: rgba(Kshcolor, Kshform-feedback-tooltip-opacity), Kshfocus-box-shadow: 0 0 Kshinput-btn-focus-blur Kshinput-focus-width rgba(Kshcolor, Kshinput-btn-focus-color-opacity)) {
+    .#{Kshstate}-feedback {
+        display: none;
+        width: 100%;
+        margin-top: Kshform-feedback-margin-top;
+        @include font-size(Kshform-feedback-font-size);
+        font-style: Kshform-feedback-font-style;
+        color: Kshcolor;
+    }
+    .#{Kshstate}-tooltip {
+        position: absolute;
+        top: 100%;
+        z-index: 5;
+        display: none;
+        max-width: 100%; // Contain to parent when possible
+        padding: Kshform-feedback-tooltip-padding-y Kshform-feedback-tooltip-padding-x;
+        margin-top: .1rem;
+        @include font-size(Kshform-feedback-tooltip-font-size);
+        line-height: Kshform-feedback-tooltip-line-height;
+        color: Kshtooltip-color;
+        background-color: Kshtooltip-bg-color;
+        @include border-radius(Kshform-feedback-tooltip-border-radius);
+    }
+    @include form-validation-state-selector(Kshstate) {
+        ~.#{Kshstate}-feedback,
+        ~.#{Kshstate}-tooltip {
+            display: block;
+        }
+    }
+    .form-control {
+        @include form-validation-state-selector(Kshstate) {
+            border-color: Kshcolor;
+            @if Kshenable-validation-icons {
+                padding-right: Kshinput-height-inner;
+                background-image: escape-svg(Kshicon);
+                background-repeat: no-repeat;
+                background-position: right Kshinput-height-inner-quarter center;
+                background-size: Kshinput-height-inner-half Kshinput-height-inner-half;
+            }
+            &:focus {
+                border-color: Kshcolor;
+                box-shadow: Kshfocus-box-shadow;
+            }
+        }
+    }
+    // stylelint-disable-next-line selector-no-qualifying-type
+    textarea.form-control {
+        @include form-validation-state-selector(Kshstate) {
+            @if Kshenable-validation-icons {
+                padding-right: Kshinput-height-inner;
+                background-position: top Kshinput-height-inner-quarter right Kshinput-height-inner-quarter;
+            }
+        }
+    }
+    .form-select {
+        @include form-validation-state-selector(Kshstate) {
+            border-color: Kshcolor;
+            @if Kshenable-validation-icons {
+                &:not([multiple]):not([size]),
+                &:not([multiple])[size="1"] {
+                    padding-right: Kshform-select-feedback-icon-padding-end;
+                    background-image: escape-svg(Kshform-select-indicator), escape-svg(Kshicon);
+                    background-position: Kshform-select-bg-position, Kshform-select-feedback-icon-position;
+                    background-size: Kshform-select-bg-size, Kshform-select-feedback-icon-size;
+                }
+            }
+            &:focus {
+                border-color: Kshcolor;
+                box-shadow: Kshfocus-box-shadow;
+            }
+        }
+    }
+    .form-check-input {
+        @include form-validation-state-selector(Kshstate) {
+            border-color: Kshcolor;
+            &:checked {
+                background-color: Kshcolor;
+            }
+            &:focus {
+                box-shadow: Kshfocus-box-shadow;
+            }
+            ~.form-check-label {
+                color: Kshcolor;
+            }
+        }
+    }
+    .form-check-inline .form-check-input {
+        ~.#{Kshstate}-feedback {
+            margin-left: .5em;
+        }
+    }
+    .input-group .form-control,
+    .input-group .form-select {
+        @include form-validation-state-selector(Kshstate) {
+            z-index: 3;
+        }
+    }
+}
+
+// scss-docs-end form-validation-mixins

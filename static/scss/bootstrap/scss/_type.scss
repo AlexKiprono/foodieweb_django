@@ -1,0 +1,99 @@
+//
+// Headings
+//
+.h1 {
+    @extend h1;
+}
+
+.h2 {
+    @extend h2;
+}
+
+.h3 {
+    @extend h3;
+}
+
+.h4 {
+    @extend h4;
+}
+
+.h5 {
+    @extend h5;
+}
+
+.h6 {
+    @extend h6;
+}
+
+.lead {
+    @include font-size(Kshlead-font-size);
+    font-weight: Kshlead-font-weight;
+}
+
+// Type display classes
+@each Kshdisplay,
+Kshfont-size in Kshdisplay-font-sizes {
+    .display-#{Kshdisplay} {
+        @include font-size(Kshfont-size);
+        font-weight: Kshdisplay-font-weight;
+        line-height: Kshdisplay-line-height;
+    }
+}
+
+//
+// Emphasis
+//
+.small {
+    @extend small;
+}
+
+.mark {
+    @extend mark;
+}
+
+//
+// Lists
+//
+.list-unstyled {
+    @include list-unstyled();
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+    @include list-unstyled();
+}
+
+.list-inline-item {
+    display: inline-block;
+    &:not(:last-child) {
+        margin-right: Kshlist-inline-padding;
+    }
+}
+
+//
+// Misc
+//
+// Builds on `abbr`
+.initialism {
+    @include font-size(Kshinitialism-font-size);
+    text-transform: uppercase;
+}
+
+// Blockquotes
+.blockquote {
+    margin-bottom: Kshblockquote-margin-y;
+    @include font-size(Kshblockquote-font-size);
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.blockquote-footer {
+    margin-top: -Kshblockquote-margin-y;
+    margin-bottom: Kshblockquote-margin-y;
+    @include font-size(Kshblockquote-footer-font-size);
+    color: Kshblockquote-footer-color;
+    &::before {
+        content: "\2014\00A0"; // em dash, nbsp
+    }
+}

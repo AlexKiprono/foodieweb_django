@@ -1,0 +1,1159 @@
+// Variables
+//
+// Variables should follow the `Kshcomponent-state-property-size` formula for
+// consistent naming. Ex: Kshnav-link-disabled-color and Kshmodal-content-box-shadow-xs.
+// Color system
+// scss-docs-start gray-color-variables
+Kshwhite: #fff !default;
+Kshgray-100: #f8f9fa !default;
+Kshgray-200: #e9ecef !default;
+Kshgray-300: #dee2e6 !default;
+Kshgray-400: #ced4da !default;
+Kshgray-500: #adb5bd !default;
+Kshgray-600: #6c757d !default;
+Kshgray-700: #495057 !default;
+Kshgray-800: #343a40 !default;
+Kshgray-900: #212529 !default;
+Kshblack: #000 !default;
+// scss-docs-end gray-color-variables
+// fusv-disable
+// scss-docs-start gray-colors-map
+Kshgrays: ( "100": Kshgray-100, "200": Kshgray-200, "300": Kshgray-300, "400": Kshgray-400, "500": Kshgray-500, "600": Kshgray-600, "700": Kshgray-700, "800": Kshgray-800, "900": Kshgray-900) !default;
+// scss-docs-end gray-colors-map
+// fusv-enable
+// scss-docs-start color-variables
+Kshblue: #0d6efd !default;
+Kshindigo: #6610f2 !default;
+Kshpurple: #6f42c1 !default;
+Kshpink: #d63384 !default;
+Kshred: #dc3545 !default;
+Kshorange: #fd7e14 !default;
+Kshyellow: #ffc107 !default;
+Kshgreen: #198754 !default;
+Kshteal: #20c997 !default;
+Kshcyan: #0dcaf0 !default;
+// scss-docs-end color-variables
+// scss-docs-start colors-map
+Kshcolors: ( "blue": Kshblue, "indigo": Kshindigo, "purple": Kshpurple, "pink": Kshpink, "red": Kshred, "orange": Kshorange, "yellow": Kshyellow, "green": Kshgreen, "teal": Kshteal, "cyan": Kshcyan, "white": Kshwhite, "gray": Kshgray-600, "gray-dark": Kshgray-800) !default;
+// scss-docs-end colors-map
+// scss-docs-start theme-color-variables
+Kshprimary: Kshblue !default;
+Kshsecondary: Kshgray-600 !default;
+Kshsuccess: Kshgreen !default;
+Kshinfo: Kshcyan !default;
+Kshwarning: Kshyellow !default;
+Kshdanger: Kshred !default;
+Kshlight: Kshgray-100 !default;
+Kshdark: Kshgray-900 !default;
+// scss-docs-end theme-color-variables
+// scss-docs-start theme-colors-map
+Kshtheme-colors: ( "primary": Kshprimary, "secondary": Kshsecondary, "success": Kshsuccess, "info": Kshinfo, "warning": Kshwarning, "danger": Kshdanger, "light": Kshlight, "dark": Kshdark) !default;
+// scss-docs-end theme-colors-map
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+Kshmin-contrast-ratio: 4.5 !default;
+// Customize the light and dark text colors for use in our color contrast function.
+Kshcolor-contrast-dark: Kshblack !default;
+Kshcolor-contrast-light: Kshwhite !default;
+// fusv-disable
+Kshblue-100: tint-color(Kshblue, 80%) !default;
+Kshblue-200: tint-color(Kshblue, 60%) !default;
+Kshblue-300: tint-color(Kshblue, 40%) !default;
+Kshblue-400: tint-color(Kshblue, 20%) !default;
+Kshblue-500: Kshblue !default;
+Kshblue-600: shade-color(Kshblue, 20%) !default;
+Kshblue-700: shade-color(Kshblue, 40%) !default;
+Kshblue-800: shade-color(Kshblue, 60%) !default;
+Kshblue-900: shade-color(Kshblue, 80%) !default;
+Kshindigo-100: tint-color(Kshindigo, 80%) !default;
+Kshindigo-200: tint-color(Kshindigo, 60%) !default;
+Kshindigo-300: tint-color(Kshindigo, 40%) !default;
+Kshindigo-400: tint-color(Kshindigo, 20%) !default;
+Kshindigo-500: Kshindigo !default;
+Kshindigo-600: shade-color(Kshindigo, 20%) !default;
+Kshindigo-700: shade-color(Kshindigo, 40%) !default;
+Kshindigo-800: shade-color(Kshindigo, 60%) !default;
+Kshindigo-900: shade-color(Kshindigo, 80%) !default;
+Kshpurple-100: tint-color(Kshpurple, 80%) !default;
+Kshpurple-200: tint-color(Kshpurple, 60%) !default;
+Kshpurple-300: tint-color(Kshpurple, 40%) !default;
+Kshpurple-400: tint-color(Kshpurple, 20%) !default;
+Kshpurple-500: Kshpurple !default;
+Kshpurple-600: shade-color(Kshpurple, 20%) !default;
+Kshpurple-700: shade-color(Kshpurple, 40%) !default;
+Kshpurple-800: shade-color(Kshpurple, 60%) !default;
+Kshpurple-900: shade-color(Kshpurple, 80%) !default;
+Kshpink-100: tint-color(Kshpink, 80%) !default;
+Kshpink-200: tint-color(Kshpink, 60%) !default;
+Kshpink-300: tint-color(Kshpink, 40%) !default;
+Kshpink-400: tint-color(Kshpink, 20%) !default;
+Kshpink-500: Kshpink !default;
+Kshpink-600: shade-color(Kshpink, 20%) !default;
+Kshpink-700: shade-color(Kshpink, 40%) !default;
+Kshpink-800: shade-color(Kshpink, 60%) !default;
+Kshpink-900: shade-color(Kshpink, 80%) !default;
+Kshred-100: tint-color(Kshred, 80%) !default;
+Kshred-200: tint-color(Kshred, 60%) !default;
+Kshred-300: tint-color(Kshred, 40%) !default;
+Kshred-400: tint-color(Kshred, 20%) !default;
+Kshred-500: Kshred !default;
+Kshred-600: shade-color(Kshred, 20%) !default;
+Kshred-700: shade-color(Kshred, 40%) !default;
+Kshred-800: shade-color(Kshred, 60%) !default;
+Kshred-900: shade-color(Kshred, 80%) !default;
+Kshorange-100: tint-color(Kshorange, 80%) !default;
+Kshorange-200: tint-color(Kshorange, 60%) !default;
+Kshorange-300: tint-color(Kshorange, 40%) !default;
+Kshorange-400: tint-color(Kshorange, 20%) !default;
+Kshorange-500: Kshorange !default;
+Kshorange-600: shade-color(Kshorange, 20%) !default;
+Kshorange-700: shade-color(Kshorange, 40%) !default;
+Kshorange-800: shade-color(Kshorange, 60%) !default;
+Kshorange-900: shade-color(Kshorange, 80%) !default;
+Kshyellow-100: tint-color(Kshyellow, 80%) !default;
+Kshyellow-200: tint-color(Kshyellow, 60%) !default;
+Kshyellow-300: tint-color(Kshyellow, 40%) !default;
+Kshyellow-400: tint-color(Kshyellow, 20%) !default;
+Kshyellow-500: Kshyellow !default;
+Kshyellow-600: shade-color(Kshyellow, 20%) !default;
+Kshyellow-700: shade-color(Kshyellow, 40%) !default;
+Kshyellow-800: shade-color(Kshyellow, 60%) !default;
+Kshyellow-900: shade-color(Kshyellow, 80%) !default;
+Kshgreen-100: tint-color(Kshgreen, 80%) !default;
+Kshgreen-200: tint-color(Kshgreen, 60%) !default;
+Kshgreen-300: tint-color(Kshgreen, 40%) !default;
+Kshgreen-400: tint-color(Kshgreen, 20%) !default;
+Kshgreen-500: Kshgreen !default;
+Kshgreen-600: shade-color(Kshgreen, 20%) !default;
+Kshgreen-700: shade-color(Kshgreen, 40%) !default;
+Kshgreen-800: shade-color(Kshgreen, 60%) !default;
+Kshgreen-900: shade-color(Kshgreen, 80%) !default;
+Kshteal-100: tint-color(Kshteal, 80%) !default;
+Kshteal-200: tint-color(Kshteal, 60%) !default;
+Kshteal-300: tint-color(Kshteal, 40%) !default;
+Kshteal-400: tint-color(Kshteal, 20%) !default;
+Kshteal-500: Kshteal !default;
+Kshteal-600: shade-color(Kshteal, 20%) !default;
+Kshteal-700: shade-color(Kshteal, 40%) !default;
+Kshteal-800: shade-color(Kshteal, 60%) !default;
+Kshteal-900: shade-color(Kshteal, 80%) !default;
+Kshcyan-100: tint-color(Kshcyan, 80%) !default;
+Kshcyan-200: tint-color(Kshcyan, 60%) !default;
+Kshcyan-300: tint-color(Kshcyan, 40%) !default;
+Kshcyan-400: tint-color(Kshcyan, 20%) !default;
+Kshcyan-500: Kshcyan !default;
+Kshcyan-600: shade-color(Kshcyan, 20%) !default;
+Kshcyan-700: shade-color(Kshcyan, 40%) !default;
+Kshcyan-800: shade-color(Kshcyan, 60%) !default;
+Kshcyan-900: shade-color(Kshcyan, 80%) !default;
+// fusv-enable
+// Characters which are escaped by the escape-svg function
+Kshescaped-characters: ( ("<", "%3c"), (">", "%3e"), ("#", "%23"), ("(", "%28"), (")", "%29"), ) !default;
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+Kshenable-caret: true !default;
+Kshenable-rounded: true !default;
+Kshenable-shadows: false !default;
+Kshenable-gradients: false !default;
+Kshenable-transitions: true !default;
+Kshenable-reduced-motion: true !default;
+Kshenable-smooth-scroll: true !default;
+Kshenable-grid-classes: true !default;
+Kshenable-button-pointers: true !default;
+Kshenable-rfs: true !default;
+Kshenable-validation-icons: true !default;
+Kshenable-negative-margins: false !default;
+Kshenable-deprecation-messages: true !default;
+Kshenable-important-utilities: true !default;
+// Prefix for :root CSS variables
+Kshvariable-prefix: bs- !default;
+// Gradient
+//
+// The gradient which is added to components if `Kshenable-gradients` is `true`
+// This gradient is also added to elements with `.bg-gradient`
+// scss-docs-start variable-gradient
+Kshgradient: linear-gradient(180deg, rgba(Kshwhite, .15), rgba(Kshwhite, 0)) !default;
+// scss-docs-end variable-gradient
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the Kshspacers map, should you need more variation.
+// scss-docs-start spacer-variables-maps
+Kshspacer: 1rem !default;
+Kshspacers: ( 0: 0, 1: Kshspacer / 4, 2: Kshspacer / 2, 3: Kshspacer, 4: Kshspacer * 1.5, 5: Kshspacer * 3, ) !default;
+Kshnegative-spacers: if(Kshenable-negative-margins, negativify-map(Kshspacers), null) !default;
+// scss-docs-end spacer-variables-maps
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+// scss-docs-start position-map
+Kshposition-values: ( 0: 0, 50: 50%, 100: 100%) !default;
+// scss-docs-end position-map
+// Body
+//
+// Settings for the `<body>` element.
+Kshbody-bg: Kshwhite !default;
+Kshbody-color: Kshgray-900 !default;
+Kshbody-text-align: null !default;
+// Links
+//
+// Style anchor elements.
+Kshlink-color: Kshprimary !default;
+Kshlink-decoration: underline !default;
+Kshlink-shade-percentage: 20% !default;
+Kshlink-hover-color: shift-color(Kshlink-color, Kshlink-shade-percentage) !default;
+Kshlink-hover-decoration: null !default;
+Kshstretched-link-pseudo-element: after !default;
+Kshstretched-link-z-index: 1 !default;
+// Paragraphs
+//
+// Style p element.
+Kshparagraph-margin-bottom: 1rem !default;
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+// scss-docs-start grid-breakpoints
+Kshgrid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px) !default;
+// scss-docs-end grid-breakpoints
+@include _assert-ascending(Kshgrid-breakpoints, "Kshgrid-breakpoints");
+@include _assert-starts-at-zero(Kshgrid-breakpoints, "Kshgrid-breakpoints");
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+// scss-docs-start container-max-widths
+Kshcontainer-max-widths: ( sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1320px) !default;
+// scss-docs-end container-max-widths
+@include _assert-ascending(Kshcontainer-max-widths, "Kshcontainer-max-widths");
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+Kshgrid-columns: 12 !default;
+Kshgrid-gutter-width: 1.5rem !default;
+Kshgrid-row-columns: 6 !default;
+Kshgutters: Kshspacers !default;
+// Container padding
+Kshcontainer-padding-x: Kshgrid-gutter-width / 2 !default;
+// Components
+//
+// Define common padding and border radius sizes and more.
+// scss-docs-start border-variables
+Kshborder-width: 1px !default;
+Kshborder-widths: ( 1: 1px, 2: 2px, 3: 3px, 4: 4px, 5: 5px) !default;
+Kshborder-color: Kshgray-300 !default;
+// scss-docs-end border-variables
+// scss-docs-start border-radius-variables
+Kshborder-radius: .25rem !default;
+Kshborder-radius-sm: .2rem !default;
+Kshborder-radius-lg: .3rem !default;
+Kshborder-radius-pill: 50rem !default;
+// scss-docs-end border-radius-variables
+// scss-docs-start box-shadow-variables
+Kshbox-shadow: 0 .5rem 1rem rgba(Kshblack, .15) !default;
+Kshbox-shadow-sm: 0 .125rem .25rem rgba(Kshblack, .075) !default;
+Kshbox-shadow-lg: 0 1rem 3rem rgba(Kshblack, .175) !default;
+Kshbox-shadow-inset: inset 0 1px 2px rgba(Kshblack, .075) !default;
+// scss-docs-end box-shadow-variables
+Kshcomponent-active-color: Kshwhite !default;
+Kshcomponent-active-bg: Kshprimary !default;
+// scss-docs-start caret-variables
+Kshcaret-width: .3em !default;
+Kshcaret-vertical-align: Kshcaret-width * .85 !default;
+Kshcaret-spacing: Kshcaret-width * .85 !default;
+// scss-docs-end caret-variables
+Kshtransition-base: all .2s ease-in-out !default;
+Kshtransition-fade: opacity .15s linear !default;
+// scss-docs-start collapse-transition
+Kshtransition-collapse: height .35s ease !default;
+// scss-docs-end collapse-transition
+// stylelint-disable function-disallowed-list
+// scss-docs-start aspect-ratios
+Kshaspect-ratios: ( "1x1": 100%, "4x3": calc(3 / 4 * 100%), "16x9": calc(9 / 16 * 100%), "21x9": calc(9 / 21 * 100%)) !default;
+// scss-docs-end aspect-ratios
+// stylelint-enable function-disallowed-list
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+// scss-docs-start font-variables
+// stylelint-disable value-keyword-case
+Kshfont-family-sans-serif: system-ui,
+-apple-system,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+"Noto Sans",
+"Liberation Sans",
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+"Noto Color Emoji" !default;
+Kshfont-family-monospace: SFMono-Regular,
+Menlo,
+Monaco,
+Consolas,
+"Liberation Mono",
+"Courier New",
+monospace !default;
+// stylelint-enable value-keyword-case
+Kshfont-family-base: var(--#{Kshvariable-prefix}font-sans-serif) !default;
+Kshfont-family-code: var(--#{Kshvariable-prefix}font-monospace) !default;
+// Kshfont-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
+// Kshfont-size-base effects the font size of the body text
+Kshfont-size-root: null !default;
+Kshfont-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+Kshfont-size-sm: Kshfont-size-base * .875 !default;
+Kshfont-size-lg: Kshfont-size-base * 1.25 !default;
+Kshfont-weight-lighter: lighter !default;
+Kshfont-weight-light: 300 !default;
+Kshfont-weight-normal: 400 !default;
+Kshfont-weight-bold: 700 !default;
+Kshfont-weight-bolder: bolder !default;
+Kshfont-weight-base: Kshfont-weight-normal !default;
+Kshline-height-base: 1.5 !default;
+Kshline-height-sm: 1.25 !default;
+Kshline-height-lg: 2 !default;
+Kshh1-font-size: Kshfont-size-base * 2.5 !default;
+Kshh2-font-size: Kshfont-size-base * 2 !default;
+Kshh3-font-size: Kshfont-size-base * 1.75 !default;
+Kshh4-font-size: Kshfont-size-base * 1.5 !default;
+Kshh5-font-size: Kshfont-size-base * 1.25 !default;
+Kshh6-font-size: Kshfont-size-base !default;
+// scss-docs-end font-variables
+// scss-docs-start font-sizes
+Kshfont-sizes: ( 1: Kshh1-font-size, 2: Kshh2-font-size, 3: Kshh3-font-size, 4: Kshh4-font-size, 5: Kshh5-font-size, 6: Kshh6-font-size) !default;
+// scss-docs-end font-sizes
+// scss-docs-start headings-variables
+Kshheadings-margin-bottom: Kshspacer / 2 !default;
+Kshheadings-font-family: null !default;
+Kshheadings-font-style: null !default;
+Kshheadings-font-weight: 500 !default;
+Kshheadings-line-height: 1.2 !default;
+Kshheadings-color: null !default;
+// scss-docs-end headings-variables
+// scss-docs-start display-headings
+Kshdisplay-font-sizes: ( 1: 5rem, 2: 4.5rem, 3: 4rem, 4: 3.5rem, 5: 3rem, 6: 2.5rem) !default;
+Kshdisplay-font-weight: 300 !default;
+Kshdisplay-line-height: Kshheadings-line-height !default;
+// scss-docs-end display-headings
+// scss-docs-start type-variables
+Kshlead-font-size: Kshfont-size-base * 1.25 !default;
+Kshlead-font-weight: 300 !default;
+Kshsmall-font-size: .875em !default;
+Kshsub-sup-font-size: .75em !default;
+Kshtext-muted: Kshgray-600 !default;
+Kshinitialism-font-size: Kshsmall-font-size !default;
+Kshblockquote-margin-y: Kshspacer !default;
+Kshblockquote-font-size: Kshfont-size-base * 1.25 !default;
+Kshblockquote-footer-color: Kshgray-600 !default;
+Kshblockquote-footer-font-size: Kshsmall-font-size !default;
+Kshhr-margin-y: Kshspacer !default;
+Kshhr-color: inherit !default;
+Kshhr-height: Kshborder-width !default;
+Kshhr-opacity: .25 !default;
+Kshlegend-margin-bottom: .5rem !default;
+Kshlegend-font-size: 1.5rem !default;
+Kshlegend-font-weight: null !default;
+Kshmark-padding: .2em !default;
+Kshdt-font-weight: Kshfont-weight-bold !default;
+Kshnested-kbd-font-weight: Kshfont-weight-bold !default;
+Kshlist-inline-padding: .5rem !default;
+Kshmark-bg: #fcf8e3 !default;
+// scss-docs-end type-variables
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+// scss-docs-start table-variables
+Kshtable-cell-padding-y: .5rem !default;
+Kshtable-cell-padding-x: .5rem !default;
+Kshtable-cell-padding-y-sm: .25rem !default;
+Kshtable-cell-padding-x-sm: .25rem !default;
+Kshtable-cell-vertical-align: top !default;
+Kshtable-color: Kshbody-color !default;
+Kshtable-bg: transparent !default;
+Kshtable-th-font-weight: null !default;
+Kshtable-striped-color: Kshtable-color !default;
+Kshtable-striped-bg-factor: .05 !default;
+Kshtable-striped-bg: rgba(Kshblack, Kshtable-striped-bg-factor) !default;
+Kshtable-active-color: Kshtable-color !default;
+Kshtable-active-bg-factor: .1 !default;
+Kshtable-active-bg: rgba(Kshblack, Kshtable-active-bg-factor) !default;
+Kshtable-hover-color: Kshtable-color !default;
+Kshtable-hover-bg-factor: .075 !default;
+Kshtable-hover-bg: rgba(Kshblack, Kshtable-hover-bg-factor) !default;
+Kshtable-border-factor: .1 !default;
+Kshtable-border-width: Kshborder-width !default;
+Kshtable-border-color: Kshborder-color !default;
+Kshtable-striped-order: odd !default;
+Kshtable-group-separator-color: currentColor !default;
+Kshtable-caption-color: Kshtext-muted !default;
+Kshtable-bg-scale: -80% !default;
+// scss-docs-end table-variables
+// scss-docs-start table-loop
+Kshtable-variants: ( "primary": shift-color(Kshprimary, Kshtable-bg-scale), "secondary": shift-color(Kshsecondary, Kshtable-bg-scale), "success": shift-color(Kshsuccess, Kshtable-bg-scale), "info": shift-color(Kshinfo, Kshtable-bg-scale), "warning": shift-color(Kshwarning, Kshtable-bg-scale), "danger": shift-color(Kshdanger, Kshtable-bg-scale), "light": Kshlight, "dark": Kshdark, ) !default;
+// scss-docs-end table-loop
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `Kshinput-` and `Kshbtn-` specific variables.
+// scss-docs-start input-btn-variables
+Kshinput-btn-padding-y: .375rem !default;
+Kshinput-btn-padding-x: .75rem !default;
+Kshinput-btn-font-family: null !default;
+Kshinput-btn-font-size: Kshfont-size-base !default;
+Kshinput-btn-line-height: Kshline-height-base !default;
+Kshinput-btn-focus-width: .25rem !default;
+Kshinput-btn-focus-color-opacity: .25 !default;
+Kshinput-btn-focus-color: rgba(Kshcomponent-active-bg, Kshinput-btn-focus-color-opacity) !default;
+Kshinput-btn-focus-blur: 0 !default;
+Kshinput-btn-focus-box-shadow: 0 0 Kshinput-btn-focus-blur Kshinput-btn-focus-width Kshinput-btn-focus-color !default;
+Kshinput-btn-padding-y-sm: .25rem !default;
+Kshinput-btn-padding-x-sm: .5rem !default;
+Kshinput-btn-font-size-sm: Kshfont-size-sm !default;
+Kshinput-btn-padding-y-lg: .5rem !default;
+Kshinput-btn-padding-x-lg: 1rem !default;
+Kshinput-btn-font-size-lg: Kshfont-size-lg !default;
+Kshinput-btn-border-width: Kshborder-width !default;
+// scss-docs-end input-btn-variables
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+// scss-docs-start btn-variables
+Kshbtn-padding-y: Kshinput-btn-padding-y !default;
+Kshbtn-padding-x: Kshinput-btn-padding-x !default;
+Kshbtn-font-family: Kshinput-btn-font-family !default;
+Kshbtn-font-size: Kshinput-btn-font-size !default;
+Kshbtn-line-height: Kshinput-btn-line-height !default;
+Kshbtn-white-space: null !default; // Set to `nowrap` to prevent text wrapping
+Kshbtn-padding-y-sm: Kshinput-btn-padding-y-sm !default;
+Kshbtn-padding-x-sm: Kshinput-btn-padding-x-sm !default;
+Kshbtn-font-size-sm: Kshinput-btn-font-size-sm !default;
+Kshbtn-padding-y-lg: Kshinput-btn-padding-y-lg !default;
+Kshbtn-padding-x-lg: Kshinput-btn-padding-x-lg !default;
+Kshbtn-font-size-lg: Kshinput-btn-font-size-lg !default;
+Kshbtn-border-width: Kshinput-btn-border-width !default;
+Kshbtn-font-weight: Kshfont-weight-normal !default;
+Kshbtn-box-shadow: inset 0 1px 0 rgba(Kshwhite, .15),
+0 1px 1px rgba(Kshblack, .075) !default;
+Kshbtn-focus-width: Kshinput-btn-focus-width !default;
+Kshbtn-focus-box-shadow: Kshinput-btn-focus-box-shadow !default;
+Kshbtn-disabled-opacity: .65 !default;
+Kshbtn-active-box-shadow: inset 0 3px 5px rgba(Kshblack, .125) !default;
+Kshbtn-link-color: Kshlink-color !default;
+Kshbtn-link-hover-color: Kshlink-hover-color !default;
+Kshbtn-link-disabled-color: Kshgray-600 !default;
+// Allows for customizing button radius independently from global border radius
+Kshbtn-border-radius: Kshborder-radius !default;
+Kshbtn-border-radius-sm: Kshborder-radius-sm !default;
+Kshbtn-border-radius-lg: Kshborder-radius-lg !default;
+Kshbtn-transition: color .15s ease-in-out,
+background-color .15s ease-in-out,
+border-color .15s ease-in-out,
+box-shadow .15s ease-in-out !default;
+Kshbtn-hover-bg-shade-amount: 15% !default;
+Kshbtn-hover-bg-tint-amount: 15% !default;
+Kshbtn-hover-border-shade-amount: 20% !default;
+Kshbtn-hover-border-tint-amount: 10% !default;
+Kshbtn-active-bg-shade-amount: 20% !default;
+Kshbtn-active-bg-tint-amount: 20% !default;
+Kshbtn-active-border-shade-amount: 25% !default;
+Kshbtn-active-border-tint-amount: 10% !default;
+// scss-docs-end btn-variables
+// Forms
+// scss-docs-start form-text-variables
+Kshform-text-margin-top: .25rem !default;
+Kshform-text-font-size: Kshsmall-font-size !default;
+Kshform-text-font-style: null !default;
+Kshform-text-font-weight: null !default;
+Kshform-text-color: Kshtext-muted !default;
+// scss-docs-end form-text-variables
+// scss-docs-start form-label-variables
+Kshform-label-margin-bottom: .5rem !default;
+Kshform-label-font-size: null !default;
+Kshform-label-font-style: null !default;
+Kshform-label-font-weight: null !default;
+Kshform-label-color: null !default;
+// scss-docs-end form-label-variables
+// scss-docs-start form-input-variables
+Kshinput-padding-y: Kshinput-btn-padding-y !default;
+Kshinput-padding-x: Kshinput-btn-padding-x !default;
+Kshinput-font-family: Kshinput-btn-font-family !default;
+Kshinput-font-size: Kshinput-btn-font-size !default;
+Kshinput-font-weight: Kshfont-weight-base !default;
+Kshinput-line-height: Kshinput-btn-line-height !default;
+Kshinput-padding-y-sm: Kshinput-btn-padding-y-sm !default;
+Kshinput-padding-x-sm: Kshinput-btn-padding-x-sm !default;
+Kshinput-font-size-sm: Kshinput-btn-font-size-sm !default;
+Kshinput-padding-y-lg: Kshinput-btn-padding-y-lg !default;
+Kshinput-padding-x-lg: Kshinput-btn-padding-x-lg !default;
+Kshinput-font-size-lg: Kshinput-btn-font-size-lg !default;
+Kshinput-bg: Kshwhite !default;
+Kshinput-disabled-bg: Kshgray-200 !default;
+Kshinput-disabled-border-color: null !default;
+Kshinput-color: Kshbody-color !default;
+Kshinput-border-color: Kshgray-400 !default;
+Kshinput-border-width: Kshinput-btn-border-width !default;
+Kshinput-box-shadow: Kshbox-shadow-inset !default;
+Kshinput-border-radius: Kshborder-radius !default;
+Kshinput-border-radius-sm: Kshborder-radius-sm !default;
+Kshinput-border-radius-lg: Kshborder-radius-lg !default;
+Kshinput-focus-bg: Kshinput-bg !default;
+Kshinput-focus-border-color: tint-color(Kshcomponent-active-bg, 50%) !default;
+Kshinput-focus-color: Kshinput-color !default;
+Kshinput-focus-width: Kshinput-btn-focus-width !default;
+Kshinput-focus-box-shadow: Kshinput-btn-focus-box-shadow !default;
+Kshinput-placeholder-color: Kshgray-600 !default;
+Kshinput-plaintext-color: Kshbody-color !default;
+Kshinput-height-border: Kshinput-border-width * 2 !default;
+Kshinput-height-inner: add(Kshinput-line-height * 1em, Kshinput-padding-y * 2) !default;
+Kshinput-height-inner-half: add(Kshinput-line-height * .5em, Kshinput-padding-y) !default;
+Kshinput-height-inner-quarter: add(Kshinput-line-height * .25em, Kshinput-padding-y / 2) !default;
+Kshinput-height: add(Kshinput-line-height * 1em, add(Kshinput-padding-y * 2, Kshinput-height-border, false)) !default;
+Kshinput-height-sm: add(Kshinput-line-height * 1em, add(Kshinput-padding-y-sm * 2, Kshinput-height-border, false)) !default;
+Kshinput-height-lg: add(Kshinput-line-height * 1em, add(Kshinput-padding-y-lg * 2, Kshinput-height-border, false)) !default;
+Kshinput-transition: border-color .15s ease-in-out,
+box-shadow .15s ease-in-out !default;
+// scss-docs-end form-input-variables
+// scss-docs-start form-check-variables
+Kshform-check-input-width: 1em !default;
+Kshform-check-min-height: Kshfont-size-base * Kshline-height-base !default;
+Kshform-check-padding-start: Kshform-check-input-width+.5em !default;
+Kshform-check-margin-bottom: .125rem !default;
+Kshform-check-label-color: null !default;
+Kshform-check-label-cursor: null !default;
+Kshform-check-transition: null !default;
+Kshform-check-input-active-filter: brightness(90%) !default;
+Kshform-check-input-bg: Kshinput-bg !default;
+Kshform-check-input-border: 1px solid rgba(Kshblack, .25) !default;
+Kshform-check-input-border-radius: .25em !default;
+Kshform-check-radio-border-radius: 50% !default;
+Kshform-check-input-focus-border: Kshinput-focus-border-color !default;
+Kshform-check-input-focus-box-shadow: Kshinput-btn-focus-box-shadow !default;
+Kshform-check-input-checked-color: Kshcomponent-active-color !default;
+Kshform-check-input-checked-bg-color: Kshcomponent-active-bg !default;
+Kshform-check-input-checked-border-color: Kshform-check-input-checked-bg-color !default;
+Kshform-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{Kshform-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
+Kshform-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{Kshform-check-input-checked-color}'/></svg>") !default;
+Kshform-check-input-indeterminate-color: Kshcomponent-active-color !default;
+Kshform-check-input-indeterminate-bg-color: Kshcomponent-active-bg !default;
+Kshform-check-input-indeterminate-border-color: Kshform-check-input-indeterminate-bg-color !default;
+Kshform-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{Kshform-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+Kshform-check-input-disabled-opacity: .5 !default;
+Kshform-check-label-disabled-opacity: Kshform-check-input-disabled-opacity !default;
+Kshform-check-btn-check-disabled-opacity: Kshbtn-disabled-opacity !default;
+Kshform-check-inline-margin-end: 1rem !default;
+// scss-docs-end form-check-variables
+// scss-docs-start form-switch-variables
+Kshform-switch-color: rgba(0,
+0,
+0,
+.25) !default;
+Kshform-switch-width: 2em !default;
+Kshform-switch-padding-start: Kshform-switch-width+.5em !default;
+Kshform-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{Kshform-switch-color}'/></svg>") !default;
+Kshform-switch-border-radius: Kshform-switch-width !default;
+Kshform-switch-transition: background-position .15s ease-in-out !default;
+Kshform-switch-focus-color: Kshinput-focus-border-color !default;
+Kshform-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{Kshform-switch-focus-color}'/></svg>") !default;
+Kshform-switch-checked-color: Kshcomponent-active-color !default;
+Kshform-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{Kshform-switch-checked-color}'/></svg>") !default;
+Kshform-switch-checked-bg-position: right center !default;
+// scss-docs-end form-switch-variables
+// scss-docs-start input-group-variables
+Kshinput-group-addon-padding-y: Kshinput-padding-y !default;
+Kshinput-group-addon-padding-x: Kshinput-padding-x !default;
+Kshinput-group-addon-font-weight: Kshinput-font-weight !default;
+Kshinput-group-addon-color: Kshinput-color !default;
+Kshinput-group-addon-bg: Kshgray-200 !default;
+Kshinput-group-addon-border-color: Kshinput-border-color !default;
+// scss-docs-end input-group-variables
+// scss-docs-start form-select-variables
+Kshform-select-padding-y: Kshinput-padding-y !default;
+Kshform-select-padding-x: Kshinput-padding-x !default;
+Kshform-select-font-family: Kshinput-font-family !default;
+Kshform-select-font-size: Kshinput-font-size !default;
+Kshform-select-indicator-padding: Kshform-select-padding-x * 3 !default; // Extra padding for background-image
+Kshform-select-font-weight: Kshinput-font-weight !default;
+Kshform-select-line-height: Kshinput-line-height !default;
+Kshform-select-color: Kshinput-color !default;
+Kshform-select-bg: Kshinput-bg !default;
+Kshform-select-disabled-color: null !default;
+Kshform-select-disabled-bg: Kshgray-200 !default;
+Kshform-select-disabled-border-color: Kshinput-disabled-border-color !default;
+Kshform-select-bg-position: right Kshform-select-padding-x center !default;
+Kshform-select-bg-size: 16px 12px !default; // In pixels because image dimensions
+Kshform-select-indicator-color: Kshgray-800 !default;
+Kshform-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{Kshform-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
+Kshform-select-feedback-icon-padding-end: Kshform-select-padding-x * 2.5+Kshform-select-indicator-padding !default;
+Kshform-select-feedback-icon-position: center right Kshform-select-indicator-padding !default;
+Kshform-select-feedback-icon-size: Kshinput-height-inner-half Kshinput-height-inner-half !default;
+Kshform-select-border-width: Kshinput-border-width !default;
+Kshform-select-border-color: Kshinput-border-color !default;
+Kshform-select-border-radius: Kshborder-radius !default;
+Kshform-select-box-shadow: Kshbox-shadow-inset !default;
+Kshform-select-focus-border-color: Kshinput-focus-border-color !default;
+Kshform-select-focus-width: Kshinput-focus-width !default;
+Kshform-select-focus-box-shadow: 0 0 0 Kshform-select-focus-width Kshinput-btn-focus-color !default;
+Kshform-select-padding-y-sm: Kshinput-padding-y-sm !default;
+Kshform-select-padding-x-sm: Kshinput-padding-x-sm !default;
+Kshform-select-font-size-sm: Kshinput-font-size-sm !default;
+Kshform-select-padding-y-lg: Kshinput-padding-y-lg !default;
+Kshform-select-padding-x-lg: Kshinput-padding-x-lg !default;
+Kshform-select-font-size-lg: Kshinput-font-size-lg !default;
+// scss-docs-end form-select-variables
+// scss-docs-start form-range-variables
+Kshform-range-track-width: 100% !default;
+Kshform-range-track-height: .5rem !default;
+Kshform-range-track-cursor: pointer !default;
+Kshform-range-track-bg: Kshgray-300 !default;
+Kshform-range-track-border-radius: 1rem !default;
+Kshform-range-track-box-shadow: Kshbox-shadow-inset !default;
+Kshform-range-thumb-width: 1rem !default;
+Kshform-range-thumb-height: Kshform-range-thumb-width !default;
+Kshform-range-thumb-bg: Kshcomponent-active-bg !default;
+Kshform-range-thumb-border: 0 !default;
+Kshform-range-thumb-border-radius: 1rem !default;
+Kshform-range-thumb-box-shadow: 0 .1rem .25rem rgba(Kshblack,
+.1) !default;
+Kshform-range-thumb-focus-box-shadow: 0 0 0 1px Kshbody-bg,
+Kshinput-focus-box-shadow !default;
+Kshform-range-thumb-focus-box-shadow-width: Kshinput-focus-width !default; // For focus box shadow issue in Edge
+Kshform-range-thumb-active-bg: tint-color(Kshcomponent-active-bg,
+70%) !default;
+Kshform-range-thumb-disabled-bg: Kshgray-500 !default;
+Kshform-range-thumb-transition: background-color .15s ease-in-out,
+border-color .15s ease-in-out,
+box-shadow .15s ease-in-out !default;
+// scss-docs-end form-range-variables
+// scss-docs-start form-file-variables
+Kshform-file-button-color: Kshinput-color !default;
+Kshform-file-button-bg: Kshinput-group-addon-bg !default;
+Kshform-file-button-hover-bg: shade-color(Kshform-file-button-bg,
+5%) !default;
+// scss-docs-end form-file-variables
+// scss-docs-start form-floating-variables
+Kshform-floating-height: add(3.5rem,
+Kshinput-height-border) !default;
+Kshform-floating-padding-x: Kshinput-padding-x !default;
+Kshform-floating-padding-y: 1rem !default;
+Kshform-floating-input-padding-t: 1.625rem !default;
+Kshform-floating-input-padding-b: .625rem !default;
+Kshform-floating-label-opacity: .65 !default;
+Kshform-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem) !default;
+Kshform-floating-transition: opacity .1s ease-in-out,
+transform .1s ease-in-out !default;
+// scss-docs-end form-floating-variables
+// Form validation
+// scss-docs-start form-feedback-variables
+Kshform-feedback-margin-top: Kshform-text-margin-top !default;
+Kshform-feedback-font-size: Kshform-text-font-size !default;
+Kshform-feedback-font-style: Kshform-text-font-style !default;
+Kshform-feedback-valid-color: Kshsuccess !default;
+Kshform-feedback-invalid-color: Kshdanger !default;
+Kshform-feedback-icon-valid-color: Kshform-feedback-valid-color !default;
+Kshform-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{Kshform-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+Kshform-feedback-icon-invalid-color: Kshform-feedback-invalid-color !default;
+Kshform-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{Kshform-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{Kshform-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+// scss-docs-end form-feedback-variables
+// scss-docs-start form-validation-states
+Kshform-validation-states: ( "valid": ( "color": Kshform-feedback-valid-color,
+"icon": Kshform-feedback-icon-valid),
+"invalid": ( "color": Kshform-feedback-invalid-color,
+"icon": Kshform-feedback-icon-invalid)) !default;
+// scss-docs-end form-validation-states
+// Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+// scss-docs-start zindex-stack
+Kshzindex-dropdown: 1000 !default;
+Kshzindex-sticky: 1020 !default;
+Kshzindex-fixed: 1030 !default;
+Kshzindex-modal-backdrop: 1040 !default;
+Kshzindex-offcanvas: 1050 !default;
+Kshzindex-modal: 1060 !default;
+Kshzindex-popover: 1070 !default;
+Kshzindex-tooltip: 1080 !default;
+// scss-docs-end zindex-stack
+// Navs
+// scss-docs-start nav-variables
+Kshnav-link-padding-y: .5rem !default;
+Kshnav-link-padding-x: 1rem !default;
+Kshnav-link-font-size: null !default;
+Kshnav-link-font-weight: null !default;
+Kshnav-link-color: Kshlink-color !default;
+Kshnav-link-hover-color: Kshlink-hover-color !default;
+Kshnav-link-transition: color .15s ease-in-out,
+background-color .15s ease-in-out,
+border-color .15s ease-in-out !default;
+Kshnav-link-disabled-color: Kshgray-600 !default;
+Kshnav-tabs-border-color: Kshgray-300 !default;
+Kshnav-tabs-border-width: Kshborder-width !default;
+Kshnav-tabs-border-radius: Kshborder-radius !default;
+Kshnav-tabs-link-hover-border-color: Kshgray-200 Kshgray-200 Kshnav-tabs-border-color !default;
+Kshnav-tabs-link-active-color: Kshgray-700 !default;
+Kshnav-tabs-link-active-bg: Kshbody-bg !default;
+Kshnav-tabs-link-active-border-color: Kshgray-300 Kshgray-300 Kshnav-tabs-link-active-bg !default;
+Kshnav-pills-border-radius: Kshborder-radius !default;
+Kshnav-pills-link-active-color: Kshcomponent-active-color !default;
+Kshnav-pills-link-active-bg: Kshcomponent-active-bg !default;
+// scss-docs-end nav-variables
+// Navbar
+// scss-docs-start navbar-variables
+Kshnavbar-padding-y: Kshspacer / 2 !default;
+Kshnavbar-padding-x: null !default;
+Kshnavbar-nav-link-padding-x: .5rem !default;
+Kshnavbar-brand-font-size: Kshfont-size-lg !default;
+// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
+Kshnav-link-height: Kshfont-size-base * Kshline-height-base+Kshnav-link-padding-y * 2 !default;
+Kshnavbar-brand-height: Kshnavbar-brand-font-size * Kshline-height-base !default;
+Kshnavbar-brand-padding-y: (Kshnav-link-height - Kshnavbar-brand-height) / 2 !default;
+Kshnavbar-brand-margin-end: 1rem !default;
+Kshnavbar-toggler-padding-y: .25rem !default;
+Kshnavbar-toggler-padding-x: .75rem !default;
+Kshnavbar-toggler-font-size: Kshfont-size-lg !default;
+Kshnavbar-toggler-border-radius: Kshbtn-border-radius !default;
+Kshnavbar-toggler-focus-width: Kshbtn-focus-width !default;
+Kshnavbar-toggler-transition: box-shadow .15s ease-in-out !default;
+// scss-docs-end navbar-variables
+// scss-docs-start navbar-theme-variables
+Kshnavbar-dark-color: rgba(Kshwhite,
+.55) !default;
+Kshnavbar-dark-hover-color: rgba(Kshwhite,
+.75) !default;
+Kshnavbar-dark-active-color: Kshwhite !default;
+Kshnavbar-dark-disabled-color: rgba(Kshwhite,
+.25) !default;
+Kshnavbar-dark-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{Kshnavbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+Kshnavbar-dark-toggler-border-color: rgba(Kshwhite,
+.1) !default;
+Kshnavbar-light-color: rgba(Kshblack,
+.55) !default;
+Kshnavbar-light-hover-color: rgba(Kshblack,
+.7) !default;
+Kshnavbar-light-active-color: rgba(Kshblack,
+.9) !default;
+Kshnavbar-light-disabled-color: rgba(Kshblack,
+.3) !default;
+Kshnavbar-light-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{Kshnavbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+Kshnavbar-light-toggler-border-color: rgba(Kshblack,
+.1) !default;
+Kshnavbar-light-brand-color: Kshnavbar-light-active-color !default;
+Kshnavbar-light-brand-hover-color: Kshnavbar-light-active-color !default;
+Kshnavbar-dark-brand-color: Kshnavbar-dark-active-color !default;
+Kshnavbar-dark-brand-hover-color: Kshnavbar-dark-active-color !default;
+// scss-docs-end navbar-theme-variables
+// Dropdowns
+//
+// Dropdown menu container and contents.
+// scss-docs-start dropdown-variables
+Kshdropdown-min-width: 10rem !default;
+Kshdropdown-padding-x: 0 !default;
+Kshdropdown-padding-y: .5rem !default;
+Kshdropdown-spacer: .125rem !default;
+Kshdropdown-font-size: Kshfont-size-base !default;
+Kshdropdown-color: Kshbody-color !default;
+Kshdropdown-bg: Kshwhite !default;
+Kshdropdown-border-color: rgba(Kshblack,
+.15) !default;
+Kshdropdown-border-radius: Kshborder-radius !default;
+Kshdropdown-border-width: Kshborder-width !default;
+Kshdropdown-inner-border-radius: subtract(Kshdropdown-border-radius,
+Kshdropdown-border-width) !default;
+Kshdropdown-divider-bg: Kshdropdown-border-color !default;
+Kshdropdown-divider-margin-y: Kshspacer / 2 !default;
+Kshdropdown-box-shadow: Kshbox-shadow !default;
+Kshdropdown-link-color: Kshgray-900 !default;
+Kshdropdown-link-hover-color: shade-color(Kshgray-900,
+10%) !default;
+Kshdropdown-link-hover-bg: Kshgray-200 !default;
+Kshdropdown-link-active-color: Kshcomponent-active-color !default;
+Kshdropdown-link-active-bg: Kshcomponent-active-bg !default;
+Kshdropdown-link-disabled-color: Kshgray-500 !default;
+Kshdropdown-item-padding-y: Kshspacer / 4 !default;
+Kshdropdown-item-padding-x: Kshspacer !default;
+Kshdropdown-header-color: Kshgray-600 !default;
+Kshdropdown-header-padding: Kshdropdown-padding-y Kshdropdown-item-padding-x !default;
+// scss-docs-end dropdown-variables
+// scss-docs-start dropdown-dark-variables
+Kshdropdown-dark-color: Kshgray-300 !default;
+Kshdropdown-dark-bg: Kshgray-800 !default;
+Kshdropdown-dark-border-color: Kshdropdown-border-color !default;
+Kshdropdown-dark-divider-bg: Kshdropdown-divider-bg !default;
+Kshdropdown-dark-box-shadow: null !default;
+Kshdropdown-dark-link-color: Kshdropdown-dark-color !default;
+Kshdropdown-dark-link-hover-color: Kshwhite !default;
+Kshdropdown-dark-link-hover-bg: rgba(Kshwhite,
+.15) !default;
+Kshdropdown-dark-link-active-color: Kshdropdown-link-active-color !default;
+Kshdropdown-dark-link-active-bg: Kshdropdown-link-active-bg !default;
+Kshdropdown-dark-link-disabled-color: Kshgray-500 !default;
+Kshdropdown-dark-header-color: Kshgray-500 !default;
+// scss-docs-end dropdown-dark-variables
+// Pagination
+// scss-docs-start pagination-variables
+Kshpagination-padding-y: .375rem !default;
+Kshpagination-padding-x: .75rem !default;
+Kshpagination-padding-y-sm: .25rem !default;
+Kshpagination-padding-x-sm: .5rem !default;
+Kshpagination-padding-y-lg: .75rem !default;
+Kshpagination-padding-x-lg: 1.5rem !default;
+Kshpagination-color: Kshlink-color !default;
+Kshpagination-bg: Kshwhite !default;
+Kshpagination-border-width: Kshborder-width !default;
+Kshpagination-border-radius: Kshborder-radius !default;
+Kshpagination-margin-start: -Kshpagination-border-width !default;
+Kshpagination-border-color: Kshgray-300 !default;
+Kshpagination-focus-color: Kshlink-hover-color !default;
+Kshpagination-focus-bg: Kshgray-200 !default;
+Kshpagination-focus-box-shadow: Kshinput-btn-focus-box-shadow !default;
+Kshpagination-focus-outline: 0 !default;
+Kshpagination-hover-color: Kshlink-hover-color !default;
+Kshpagination-hover-bg: Kshgray-200 !default;
+Kshpagination-hover-border-color: Kshgray-300 !default;
+Kshpagination-active-color: Kshcomponent-active-color !default;
+Kshpagination-active-bg: Kshcomponent-active-bg !default;
+Kshpagination-active-border-color: Kshpagination-active-bg !default;
+Kshpagination-disabled-color: Kshgray-600 !default;
+Kshpagination-disabled-bg: Kshwhite !default;
+Kshpagination-disabled-border-color: Kshgray-300 !default;
+Kshpagination-transition: color .15s ease-in-out,
+background-color .15s ease-in-out,
+border-color .15s ease-in-out,
+box-shadow .15s ease-in-out !default;
+Kshpagination-border-radius-sm: Kshborder-radius-sm !default;
+Kshpagination-border-radius-lg: Kshborder-radius-lg !default;
+// scss-docs-end pagination-variables
+// Cards
+// scss-docs-start card-variables
+Kshcard-spacer-y: Kshspacer !default;
+Kshcard-spacer-x: Kshspacer !default;
+Kshcard-title-spacer-y: Kshspacer / 2 !default;
+Kshcard-border-width: Kshborder-width !default;
+Kshcard-border-radius: Kshborder-radius !default;
+Kshcard-border-color: rgba(Kshblack,
+.125) !default;
+Kshcard-inner-border-radius: subtract(Kshcard-border-radius,
+Kshcard-border-width) !default;
+Kshcard-cap-padding-y: Kshcard-spacer-y / 2 !default;
+Kshcard-cap-padding-x: Kshcard-spacer-x !default;
+Kshcard-cap-bg: rgba(Kshblack,
+.03) !default;
+Kshcard-cap-color: null !default;
+Kshcard-height: null !default;
+Kshcard-color: null !default;
+Kshcard-bg: Kshwhite !default;
+Kshcard-img-overlay-padding: Kshspacer !default;
+Kshcard-group-margin: Kshgrid-gutter-width / 2 !default;
+// scss-docs-end card-variables
+// Accordion
+// scss-docs-start accordion-variables
+Kshaccordion-padding-y: 1rem !default;
+Kshaccordion-padding-x: 1.25rem !default;
+Kshaccordion-color: Kshbody-color !default;
+Kshaccordion-bg: Kshbody-bg !default;
+Kshaccordion-border-width: Kshborder-width !default;
+Kshaccordion-border-color: rgba(Kshblack,
+.125) !default;
+Kshaccordion-border-radius: Kshborder-radius !default;
+Kshaccordion-inner-border-radius: subtract(Kshaccordion-border-radius,
+Kshaccordion-border-width) !default;
+Kshaccordion-body-padding-y: Kshaccordion-padding-y !default;
+Kshaccordion-body-padding-x: Kshaccordion-padding-x !default;
+Kshaccordion-button-padding-y: Kshaccordion-padding-y !default;
+Kshaccordion-button-padding-x: Kshaccordion-padding-x !default;
+Kshaccordion-button-color: Kshaccordion-color !default;
+Kshaccordion-button-bg: Kshaccordion-bg !default;
+Kshaccordion-transition: Kshbtn-transition,
+border-radius .15s ease !default;
+Kshaccordion-button-active-bg: tint-color(Kshcomponent-active-bg,
+90%) !default;
+Kshaccordion-button-active-color: shade-color(Kshprimary,
+10%) !default;
+Kshaccordion-button-focus-border-color: Kshinput-focus-border-color !default;
+Kshaccordion-button-focus-box-shadow: Kshbtn-focus-box-shadow !default;
+Kshaccordion-icon-width: 1.25rem !default;
+Kshaccordion-icon-color: Kshaccordion-color !default;
+Kshaccordion-icon-active-color: Kshaccordion-button-active-color !default;
+Kshaccordion-icon-transition: transform .2s ease-in-out !default;
+Kshaccordion-icon-transform: rotate(-180deg) !default;
+Kshaccordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{Kshaccordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+Kshaccordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{Kshaccordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+// scss-docs-end accordion-variables
+// Tooltips
+// scss-docs-start tooltip-variables
+Kshtooltip-font-size: Kshfont-size-sm !default;
+Kshtooltip-max-width: 200px !default;
+Kshtooltip-color: Kshwhite !default;
+Kshtooltip-bg: Kshblack !default;
+Kshtooltip-border-radius: Kshborder-radius !default;
+Kshtooltip-opacity: .9 !default;
+Kshtooltip-padding-y: Kshspacer / 4 !default;
+Kshtooltip-padding-x: Kshspacer / 2 !default;
+Kshtooltip-margin: 0 !default;
+Kshtooltip-arrow-width: .8rem !default;
+Kshtooltip-arrow-height: .4rem !default;
+Kshtooltip-arrow-color: Kshtooltip-bg !default;
+// scss-docs-end tooltip-variables
+// Form tooltips must come after regular tooltips
+// scss-docs-start tooltip-feedback-variables
+Kshform-feedback-tooltip-padding-y: Kshtooltip-padding-y !default;
+Kshform-feedback-tooltip-padding-x: Kshtooltip-padding-x !default;
+Kshform-feedback-tooltip-font-size: Kshtooltip-font-size !default;
+Kshform-feedback-tooltip-line-height: null !default;
+Kshform-feedback-tooltip-opacity: Kshtooltip-opacity !default;
+Kshform-feedback-tooltip-border-radius: Kshtooltip-border-radius !default;
+// scss-docs-start tooltip-feedback-variables
+// Popovers
+// scss-docs-start popover-variables
+Kshpopover-font-size: Kshfont-size-sm !default;
+Kshpopover-bg: Kshwhite !default;
+Kshpopover-max-width: 276px !default;
+Kshpopover-border-width: Kshborder-width !default;
+Kshpopover-border-color: rgba(Kshblack,
+.2) !default;
+Kshpopover-border-radius: Kshborder-radius-lg !default;
+Kshpopover-inner-border-radius: subtract(Kshpopover-border-radius,
+Kshpopover-border-width) !default;
+Kshpopover-box-shadow: Kshbox-shadow !default;
+Kshpopover-header-bg: shade-color(Kshpopover-bg,
+6%) !default;
+Kshpopover-header-color: Kshheadings-color !default;
+Kshpopover-header-padding-y: .5rem !default;
+Kshpopover-header-padding-x: Kshspacer !default;
+Kshpopover-body-color: Kshbody-color !default;
+Kshpopover-body-padding-y: Kshspacer !default;
+Kshpopover-body-padding-x: Kshspacer !default;
+Kshpopover-arrow-width: 1rem !default;
+Kshpopover-arrow-height: .5rem !default;
+Kshpopover-arrow-color: Kshpopover-bg !default;
+Kshpopover-arrow-outer-color: fade-in(Kshpopover-border-color,
+.05) !default;
+// scss-docs-end popover-variables
+// Toasts
+// scss-docs-start toast-variables
+Kshtoast-max-width: 350px !default;
+Kshtoast-padding-x: .75rem !default;
+Kshtoast-padding-y: .5rem !default;
+Kshtoast-font-size: .875rem !default;
+Kshtoast-color: null !default;
+Kshtoast-background-color: rgba(Kshwhite,
+.85) !default;
+Kshtoast-border-width: 1px !default;
+Kshtoast-border-color: rgba(0,
+0,
+0,
+.1) !default;
+Kshtoast-border-radius: Kshborder-radius !default;
+Kshtoast-box-shadow: Kshbox-shadow !default;
+Kshtoast-spacing: Kshcontainer-padding-x !default;
+Kshtoast-header-color: Kshgray-600 !default;
+Kshtoast-header-background-color: rgba(Kshwhite,
+.85) !default;
+Kshtoast-header-border-color: rgba(0,
+0,
+0,
+.05) !default;
+// scss-docs-end toast-variables
+// Badges
+// scss-docs-start badge-variables
+Kshbadge-font-size: .75em !default;
+Kshbadge-font-weight: Kshfont-weight-bold !default;
+Kshbadge-color: Kshwhite !default;
+Kshbadge-padding-y: .35em !default;
+Kshbadge-padding-x: .65em !default;
+Kshbadge-border-radius: Kshborder-radius !default;
+// scss-docs-end badge-variables
+// Modals
+// scss-docs-start modal-variables
+Kshmodal-inner-padding: Kshspacer !default;
+Kshmodal-footer-margin-between: .5rem !default;
+Kshmodal-dialog-margin: .5rem !default;
+Kshmodal-dialog-margin-y-sm-up: 1.75rem !default;
+Kshmodal-title-line-height: Kshline-height-base !default;
+Kshmodal-content-color: null !default;
+Kshmodal-content-bg: Kshwhite !default;
+Kshmodal-content-border-color: rgba(Kshblack,
+.2) !default;
+Kshmodal-content-border-width: Kshborder-width !default;
+Kshmodal-content-border-radius: Kshborder-radius-lg !default;
+Kshmodal-content-inner-border-radius: subtract(Kshmodal-content-border-radius,
+Kshmodal-content-border-width) !default;
+Kshmodal-content-box-shadow-xs: Kshbox-shadow-sm !default;
+Kshmodal-content-box-shadow-sm-up: Kshbox-shadow !default;
+Kshmodal-backdrop-bg: Kshblack !default;
+Kshmodal-backdrop-opacity: .5 !default;
+Kshmodal-header-border-color: Kshborder-color !default;
+Kshmodal-footer-border-color: Kshmodal-header-border-color !default;
+Kshmodal-header-border-width: Kshmodal-content-border-width !default;
+Kshmodal-footer-border-width: Kshmodal-header-border-width !default;
+Kshmodal-header-padding-y: Kshmodal-inner-padding !default;
+Kshmodal-header-padding-x: Kshmodal-inner-padding !default;
+Kshmodal-header-padding: Kshmodal-header-padding-y Kshmodal-header-padding-x !default; // Keep this for backwards compatibility
+Kshmodal-sm: 300px !default;
+Kshmodal-md: 500px !default;
+Kshmodal-lg: 800px !default;
+Kshmodal-xl: 1140px !default;
+Kshmodal-fade-transform: translate(0,
+-50px) !default;
+Kshmodal-show-transform: none !default;
+Kshmodal-transition: transform .3s ease-out !default;
+Kshmodal-scale-transform: scale(1.02) !default;
+// scss-docs-end modal-variables
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+// scss-docs-start alert-variables
+Kshalert-padding-y: Kshspacer !default;
+Kshalert-padding-x: Kshspacer !default;
+Kshalert-margin-bottom: 1rem !default;
+Kshalert-border-radius: Kshborder-radius !default;
+Kshalert-link-font-weight: Kshfont-weight-bold !default;
+Kshalert-border-width: Kshborder-width !default;
+Kshalert-bg-scale: -80% !default;
+Kshalert-border-scale: -70% !default;
+Kshalert-color-scale: 40% !default;
+Kshalert-dismissible-padding-r: Kshalert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
+// scss-docs-end alert-variables
+// Progress bars
+// scss-docs-start progress-variables
+Kshprogress-height: 1rem !default;
+Kshprogress-font-size: Kshfont-size-base * .75 !default;
+Kshprogress-bg: Kshgray-200 !default;
+Kshprogress-border-radius: Kshborder-radius !default;
+Kshprogress-box-shadow: Kshbox-shadow-inset !default;
+Kshprogress-bar-color: Kshwhite !default;
+Kshprogress-bar-bg: Kshprimary !default;
+Kshprogress-bar-animation-timing: 1s linear infinite !default;
+Kshprogress-bar-transition: width .6s ease !default;
+// scss-docs-end progress-variables
+// List group
+// scss-docs-start list-group-variables
+Kshlist-group-color: Kshgray-900 !default;
+Kshlist-group-bg: Kshwhite !default;
+Kshlist-group-border-color: rgba(Kshblack,
+.125) !default;
+Kshlist-group-border-width: Kshborder-width !default;
+Kshlist-group-border-radius: Kshborder-radius !default;
+Kshlist-group-item-padding-y: Kshspacer / 2 !default;
+Kshlist-group-item-padding-x: Kshspacer !default;
+Kshlist-group-item-bg-scale: -80% !default;
+Kshlist-group-item-color-scale: 40% !default;
+Kshlist-group-hover-bg: Kshgray-100 !default;
+Kshlist-group-active-color: Kshcomponent-active-color !default;
+Kshlist-group-active-bg: Kshcomponent-active-bg !default;
+Kshlist-group-active-border-color: Kshlist-group-active-bg !default;
+Kshlist-group-disabled-color: Kshgray-600 !default;
+Kshlist-group-disabled-bg: Kshlist-group-bg !default;
+Kshlist-group-action-color: Kshgray-700 !default;
+Kshlist-group-action-hover-color: Kshlist-group-action-color !default;
+Kshlist-group-action-active-color: Kshbody-color !default;
+Kshlist-group-action-active-bg: Kshgray-200 !default;
+// scss-docs-end list-group-variables
+// Image thumbnails
+// scss-docs-start thumbnail-variables
+Kshthumbnail-padding: .25rem !default;
+Kshthumbnail-bg: Kshbody-bg !default;
+Kshthumbnail-border-width: Kshborder-width !default;
+Kshthumbnail-border-color: Kshgray-300 !default;
+Kshthumbnail-border-radius: Kshborder-radius !default;
+Kshthumbnail-box-shadow: Kshbox-shadow-sm !default;
+// scss-docs-end thumbnail-variables
+// Figures
+// scss-docs-start figure-variables
+Kshfigure-caption-font-size: Kshsmall-font-size !default;
+Kshfigure-caption-color: Kshgray-600 !default;
+// scss-docs-end figure-variables
+// Breadcrumbs
+// scss-docs-start breadcrumb-variables
+Kshbreadcrumb-font-size: null !default;
+Kshbreadcrumb-padding-y: 0 !default;
+Kshbreadcrumb-padding-x: 0 !default;
+Kshbreadcrumb-item-padding-x: .5rem !default;
+Kshbreadcrumb-margin-bottom: 1rem !default;
+Kshbreadcrumb-bg: null !default;
+Kshbreadcrumb-divider-color: Kshgray-600 !default;
+Kshbreadcrumb-active-color: Kshgray-600 !default;
+Kshbreadcrumb-divider: quote("/") !default;
+Kshbreadcrumb-divider-flipped: Kshbreadcrumb-divider !default;
+Kshbreadcrumb-border-radius: null !default;
+// scss-docs-end breadcrumb-variables
+// Carousel
+// scss-docs-start carousel-variables
+Kshcarousel-control-color: Kshwhite !default;
+Kshcarousel-control-width: 15% !default;
+Kshcarousel-control-opacity: .5 !default;
+Kshcarousel-control-hover-opacity: .9 !default;
+Kshcarousel-control-transition: opacity .15s ease !default;
+Kshcarousel-indicator-width: 30px !default;
+Kshcarousel-indicator-height: 3px !default;
+Kshcarousel-indicator-hit-area-height: 10px !default;
+Kshcarousel-indicator-spacer: 3px !default;
+Kshcarousel-indicator-opacity: .5 !default;
+Kshcarousel-indicator-active-bg: Kshwhite !default;
+Kshcarousel-indicator-active-opacity: 1 !default;
+Kshcarousel-indicator-transition: opacity .6s ease !default;
+Kshcarousel-caption-width: 70% !default;
+Kshcarousel-caption-color: Kshwhite !default;
+Kshcarousel-caption-padding-y: 1.25rem !default;
+Kshcarousel-caption-spacer: 1.25rem !default;
+Kshcarousel-control-icon-width: 2rem !default;
+Kshcarousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{Kshcarousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
+Kshcarousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{Kshcarousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
+Kshcarousel-transition-duration: .6s !default;
+Kshcarousel-transition: transform Kshcarousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
+Kshcarousel-dark-indicator-active-bg: Kshblack !default;
+Kshcarousel-dark-caption-color: Kshblack !default;
+Kshcarousel-dark-control-icon-filter: invert(1) grayscale(100) !default;
+// scss-docs-end carousel-variables
+// Spinners
+// scss-docs-start spinner-variables
+Kshspinner-width: 2rem !default;
+Kshspinner-height: Kshspinner-width !default;
+Kshspinner-vertical-align: -.125em !default;
+Kshspinner-border-width: .25em !default;
+Kshspinner-animation-speed: .75s !default;
+Kshspinner-width-sm: 1rem !default;
+Kshspinner-height-sm: Kshspinner-width-sm !default;
+Kshspinner-border-width-sm: .2em !default;
+// scss-docs-end spinner-variables
+// Close
+// scss-docs-start close-variables
+Kshbtn-close-width: 1em !default;
+Kshbtn-close-height: Kshbtn-close-width !default;
+Kshbtn-close-padding-x: .25em !default;
+Kshbtn-close-padding-y: Kshbtn-close-padding-x !default;
+Kshbtn-close-color: Kshblack !default;
+Kshbtn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{Kshbtn-close-color}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+Kshbtn-close-focus-shadow: Kshinput-btn-focus-box-shadow !default;
+Kshbtn-close-opacity: .5 !default;
+Kshbtn-close-hover-opacity: .75 !default;
+Kshbtn-close-focus-opacity: 1 !default;
+Kshbtn-close-disabled-opacity: .25 !default;
+Kshbtn-close-white-filter: invert(1) grayscale(100%) brightness(200%) !default;
+// scss-docs-end close-variables
+// Offcanvas
+// scss-docs-start offcanvas-variables
+Kshoffcanvas-padding-y: Kshmodal-inner-padding !default;
+Kshoffcanvas-padding-x: Kshmodal-inner-padding !default;
+Kshoffcanvas-horizontal-width: 400px !default;
+Kshoffcanvas-vertical-height: 30vh !default;
+Kshoffcanvas-transition-duration: .3s !default;
+Kshoffcanvas-border-color: Kshmodal-content-border-color !default;
+Kshoffcanvas-border-width: Kshmodal-content-border-width !default;
+Kshoffcanvas-title-line-height: Kshmodal-title-line-height !default;
+Kshoffcanvas-bg-color: Kshmodal-content-bg !default;
+Kshoffcanvas-color: Kshmodal-content-color !default;
+Kshoffcanvas-box-shadow: Kshmodal-content-box-shadow-xs !default;
+// scss-docs-end offcanvas-variables
+// Code
+Kshcode-font-size: Kshsmall-font-size !default;
+Kshcode-color: Kshpink !default;
+Kshkbd-padding-y: .2rem !default;
+Kshkbd-padding-x: .4rem !default;
+Kshkbd-font-size: Kshcode-font-size !default;
+Kshkbd-color: Kshwhite !default;
+Kshkbd-bg: Kshgray-900 !default;
+Kshpre-color: null !default;

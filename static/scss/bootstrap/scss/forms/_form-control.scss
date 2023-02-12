@@ -1,0 +1,195 @@
+//
+// General form controls (plus a few specific high-level interventions)
+//
+.form-control {
+    display: block;
+    width: 100%;
+    padding: Kshinput-padding-y Kshinput-padding-x;
+    font-family: Kshinput-font-family;
+    @include font-size(Kshinput-font-size);
+    font-weight: Kshinput-font-weight;
+    line-height: Kshinput-line-height;
+    color: Kshinput-color;
+    background-color: Kshinput-bg;
+    background-clip: padding-box;
+    border: Kshinput-border-width solid Kshinput-border-color;
+    appearance: none; // Fix appearance for date inputs in Safari
+    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+    @include border-radius(Kshinput-border-radius, 0);
+    @include box-shadow(Kshinput-box-shadow);
+    @include transition(Kshinput-transition);
+    &[type="file"] {
+        overflow: hidden; // prevent pseudo element button overlap
+        &:not(:disabled):not(:read-only) {
+            cursor: pointer;
+        }
+    }
+    // Customize the `:focus` state to imitate native WebKit styles.
+    &:focus {
+        color: Kshinput-focus-color;
+        background-color: Kshinput-focus-bg;
+        border-color: Kshinput-focus-border-color;
+        outline: 0;
+        @if Kshenable-shadows {
+            @include box-shadow(Kshinput-box-shadow, Kshinput-focus-box-shadow);
+        }
+        @else {
+            // Avoid using mixin so we can pass custom focus shadow properly
+            box-shadow: Kshinput-focus-box-shadow;
+        }
+    }
+    // Add some height to date inputs on iOS
+    // https://github.com/twbs/bootstrap/issues/23307
+    // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
+    &::-webkit-date-and-time-value {
+        // Multiply line-height by 1em if it has no unit
+        height: if(unit(Kshinput-line-height)=="", Kshinput-line-height * 1em, Kshinput-line-height);
+    }
+    // Placeholder
+    &::placeholder {
+        color: Kshinput-placeholder-color;
+        // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+        opacity: 1;
+    }
+    // Disabled and read-only inputs
+    //
+    // HTML5 says that controls under a fieldset > legend:first-child won't be
+    // disabled if the fieldset is disabled. Due to implementation difficulty, we
+    // don't honor that edge case; we style them as disabled anyway.
+    &:disabled,
+    &:read-only {
+        background-color: Kshinput-disabled-bg;
+        border-color: Kshinput-disabled-border-color;
+        // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+        opacity: 1;
+    }
+    // File input buttons theming
+    &::file-selector-button {
+        padding: Kshinput-padding-y Kshinput-padding-x;
+        margin: (-Kshinput-padding-y) (-Kshinput-padding-x);
+        margin-inline-end: Kshinput-padding-x;
+        color: Kshform-file-button-color;
+        @include gradient-bg(Kshform-file-button-bg);
+        pointer-events: none;
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-inline-end-width: Kshinput-border-width;
+        border-radius: 0; // stylelint-disable-line property-disallowed-list
+        @include transition(Kshbtn-transition);
+    }
+    &:hover:not(:disabled):not(:read-only)::file-selector-button {
+        background-color: Kshform-file-button-hover-bg;
+    }
+    &::-webkit-file-upload-button {
+        padding: Kshinput-padding-y Kshinput-padding-x;
+        margin: (-Kshinput-padding-y) (-Kshinput-padding-x);
+        margin-inline-end: Kshinput-padding-x;
+        color: Kshform-file-button-color;
+        @include gradient-bg(Kshform-file-button-bg);
+        pointer-events: none;
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-inline-end-width: Kshinput-border-width;
+        border-radius: 0; // stylelint-disable-line property-disallowed-list
+        @include transition(Kshbtn-transition);
+    }
+    &:hover:not(:disabled):not(:read-only)::-webkit-file-upload-button {
+        background-color: Kshform-file-button-hover-bg;
+    }
+}
+
+// Readonly controls as plain text
+//
+// Apply class to a readonly input to make it appear like regular plain
+// text (without any border, background color, focus indicator)
+.form-control-plaintext {
+    display: block;
+    width: 100%;
+    padding: Kshinput-padding-y 0;
+    margin-bottom: 0; // match inputs if this class comes on inputs with default margins
+    line-height: Kshinput-line-height;
+    color: Kshinput-plaintext-color;
+    background-color: transparent;
+    border: solid transparent;
+    border-width: Kshinput-border-width 0;
+    &.form-control-sm,
+    &.form-control-lg {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+// Form control sizing
+//
+// Build on `.form-control` with modifier classes to decrease or increase the
+// height and font-size of form controls.
+//
+// Repeated in `_input_group.scss` to avoid Sass extend issues.
+.form-control-sm {
+    min-height: Kshinput-height-sm;
+    padding: Kshinput-padding-y-sm Kshinput-padding-x-sm;
+    @include font-size(Kshinput-font-size-sm);
+    @include border-radius(Kshinput-border-radius-sm);
+    &::file-selector-button {
+        padding: Kshinput-padding-y-sm Kshinput-padding-x-sm;
+        margin: (-Kshinput-padding-y-sm) (-Kshinput-padding-x-sm);
+        margin-inline-end: Kshinput-padding-x-sm;
+    }
+    &::-webkit-file-upload-button {
+        padding: Kshinput-padding-y-sm Kshinput-padding-x-sm;
+        margin: (-Kshinput-padding-y-sm) (-Kshinput-padding-x-sm);
+        margin-inline-end: Kshinput-padding-x-sm;
+    }
+}
+
+.form-control-lg {
+    min-height: Kshinput-height-lg;
+    padding: Kshinput-padding-y-lg Kshinput-padding-x-lg;
+    @include font-size(Kshinput-font-size-lg);
+    @include border-radius(Kshinput-border-radius-lg);
+    &::file-selector-button {
+        padding: Kshinput-padding-y-lg Kshinput-padding-x-lg;
+        margin: (-Kshinput-padding-y-lg) (-Kshinput-padding-x-lg);
+        margin-inline-end: Kshinput-padding-x-lg;
+    }
+    &::-webkit-file-upload-button {
+        padding: Kshinput-padding-y-lg Kshinput-padding-x-lg;
+        margin: (-Kshinput-padding-y-lg) (-Kshinput-padding-x-lg);
+        margin-inline-end: Kshinput-padding-x-lg;
+    }
+}
+
+// Make sure textareas don't shrink too much when resized
+// https://github.com/twbs/bootstrap/pull/29124
+// stylelint-disable selector-no-qualifying-type
+textarea {
+    &.form-control {
+        min-height: Kshinput-height;
+    }
+    &.form-control-sm {
+        min-height: Kshinput-height-sm;
+    }
+    &.form-control-lg {
+        min-height: Kshinput-height-lg;
+    }
+}
+
+// stylelint-enable selector-no-qualifying-type
+.form-control-color {
+    max-width: 3rem;
+    height: auto; // Override fixed browser height
+    padding: Kshinput-padding-y;
+    &:not(:disabled):not(:read-only) {
+        cursor: pointer;
+    }
+    &::-moz-color-swatch {
+        height: if(unit(Kshinput-line-height)=="", Kshinput-line-height * 1em, Kshinput-line-height);
+        @include border-radius(Kshinput-border-radius);
+    }
+    &::-webkit-color-swatch {
+        height: if(unit(Kshinput-line-height)=="", Kshinput-line-height * 1em, Kshinput-line-height);
+        @include border-radius(Kshinput-border-radius);
+    }
+}

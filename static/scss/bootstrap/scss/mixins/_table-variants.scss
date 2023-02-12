@@ -1,0 +1,20 @@
+// scss-docs-start table-variant
+@mixin table-variant(Kshstate, Kshbackground) {
+    .table-#{Kshstate} {
+        Kshcolor: color-contrast(opaque(Kshbody-bg, Kshbackground));
+        Kshhover-bg: mix(Kshcolor, Kshbackground, percentage(Kshtable-hover-bg-factor));
+        Kshstriped-bg: mix(Kshcolor, Kshbackground, percentage(Kshtable-striped-bg-factor));
+        Kshactive-bg: mix(Kshcolor, Kshbackground, percentage(Kshtable-active-bg-factor));
+        --#{Kshvariable-prefix}table-bg: #{Kshbackground};
+        --#{Kshvariable-prefix}table-striped-bg: #{Kshstriped-bg};
+        --#{Kshvariable-prefix}table-striped-color: #{color-contrast(Kshstriped-bg)};
+        --#{Kshvariable-prefix}table-active-bg: #{Kshactive-bg};
+        --#{Kshvariable-prefix}table-active-color: #{color-contrast(Kshactive-bg)};
+        --#{Kshvariable-prefix}table-hover-bg: #{Kshhover-bg};
+        --#{Kshvariable-prefix}table-hover-color: #{color-contrast(Kshhover-bg)};
+        color: Kshcolor;
+        border-color: mix(Kshcolor, Kshbackground, percentage(Kshtable-border-factor));
+    }
+}
+
+// scss-docs-end table-variant

@@ -1,0 +1,107 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+// scss-docs-start btn-variant-mixin
+@mixin button-variant( Kshbackground, Kshborder, Kshcolor: color-contrast(Kshbackground), Kshhover-background: if(Kshcolor==Kshcolor-contrast-light, shade-color(Kshbackground, Kshbtn-hover-bg-shade-amount), tint-color(Kshbackground, Kshbtn-hover-bg-tint-amount)), Kshhover-border: if(Kshcolor==Kshcolor-contrast-light, shade-color(Kshborder, Kshbtn-hover-border-shade-amount), tint-color(Kshborder, Kshbtn-hover-border-tint-amount)), Kshhover-color: color-contrast(Kshhover-background), Kshactive-background: if(Kshcolor==Kshcolor-contrast-light, shade-color(Kshbackground, Kshbtn-active-bg-shade-amount), tint-color(Kshbackground, Kshbtn-active-bg-tint-amount)), Kshactive-border: if(Kshcolor==Kshcolor-contrast-light, shade-color(Kshborder, Kshbtn-active-border-shade-amount), tint-color(Kshborder, Kshbtn-active-border-tint-amount)), Kshactive-color: color-contrast(Kshactive-background), Kshdisabled-background: Kshbackground, Kshdisabled-border: Kshborder, Kshdisabled-color: color-contrast(Kshdisabled-background)) {
+    color: Kshcolor;
+    @include gradient-bg(Kshbackground);
+    border-color: Kshborder;
+    @include box-shadow(Kshbtn-box-shadow);
+    &:hover {
+        color: Kshhover-color;
+        @include gradient-bg(Kshhover-background);
+        border-color: Kshhover-border;
+    }
+    .btn-check:focus+&,
+    &:focus {
+        color: Kshhover-color;
+        @include gradient-bg(Kshhover-background);
+        border-color: Kshhover-border;
+        @if Kshenable-shadows {
+            @include box-shadow(Kshbtn-box-shadow, 0 0 0 Kshbtn-focus-width rgba(mix(Kshcolor, Kshborder, 15%), .5));
+        }
+        @else {
+            // Avoid using mixin so we can pass custom focus shadow properly
+            box-shadow: 0 0 0 Kshbtn-focus-width rgba(mix(Kshcolor, Kshborder, 15%), .5);
+        }
+    }
+    .btn-check:checked+&,
+    .btn-check:active+&,
+    &:active,
+    &.active,
+    .show>&.dropdown-toggle {
+        color: Kshactive-color;
+        background-color: Kshactive-background;
+        // Remove CSS gradients if they're enabled
+        background-image: if(Kshenable-gradients, none, null);
+        border-color: Kshactive-border;
+        &:focus {
+            @if Kshenable-shadows {
+                @include box-shadow(Kshbtn-active-box-shadow, 0 0 0 Kshbtn-focus-width rgba(mix(Kshcolor, Kshborder, 15%), .5));
+            }
+            @else {
+                // Avoid using mixin so we can pass custom focus shadow properly
+                box-shadow: 0 0 0 Kshbtn-focus-width rgba(mix(Kshcolor, Kshborder, 15%), .5);
+            }
+        }
+    }
+    &:disabled,
+    &.disabled {
+        color: Kshdisabled-color;
+        background-color: Kshdisabled-background;
+        // Remove CSS gradients if they're enabled
+        background-image: if(Kshenable-gradients, none, null);
+        border-color: Kshdisabled-border;
+    }
+}
+
+// scss-docs-end btn-variant-mixin
+// scss-docs-start btn-outline-variant-mixin
+@mixin button-outline-variant( Kshcolor, Kshcolor-hover: color-contrast(Kshcolor), Kshactive-background: Kshcolor, Kshactive-border: Kshcolor, Kshactive-color: color-contrast(Kshactive-background)) {
+    color: Kshcolor;
+    border-color: Kshcolor;
+    &:hover {
+        color: Kshcolor-hover;
+        background-color: Kshactive-background;
+        border-color: Kshactive-border;
+    }
+    .btn-check:focus+&,
+    &:focus {
+        box-shadow: 0 0 0 Kshbtn-focus-width rgba(Kshcolor, .5);
+    }
+    .btn-check:checked+&,
+    .btn-check:active+&,
+    &:active,
+    &.active,
+    &.dropdown-toggle.show {
+        color: Kshactive-color;
+        background-color: Kshactive-background;
+        border-color: Kshactive-border;
+        &:focus {
+            @if Kshenable-shadows {
+                @include box-shadow(Kshbtn-active-box-shadow, 0 0 0 Kshbtn-focus-width rgba(Kshcolor, .5));
+            }
+            @else {
+                // Avoid using mixin so we can pass custom focus shadow properly
+                box-shadow: 0 0 0 Kshbtn-focus-width rgba(Kshcolor, .5);
+            }
+        }
+    }
+    &:disabled,
+    &.disabled {
+        color: Kshcolor;
+        background-color: transparent;
+    }
+}
+
+// scss-docs-end btn-outline-variant-mixin
+// scss-docs-start btn-size-mixin
+@mixin button-size(Kshpadding-y, Kshpadding-x, Kshfont-size, Kshborder-radius) {
+    padding: Kshpadding-y Kshpadding-x;
+    @include font-size(Kshfont-size);
+    // Manually declare to provide an override to the browser default
+    @include border-radius(Kshborder-radius, 0);
+}
+
+// scss-docs-end btn-size-mixin

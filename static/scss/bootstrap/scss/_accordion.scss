@@ -1,0 +1,105 @@
+//
+// Base styles
+//
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: Kshaccordion-button-padding-y Kshaccordion-button-padding-x;
+    @include font-size(Kshfont-size-base);
+    color: Kshaccordion-button-color;
+    text-align: left; // Reset button style
+    background-color: Kshaccordion-button-bg;
+    border: 0;
+    @include border-radius(0);
+    overflow-anchor: none;
+    @include transition(Kshaccordion-transition);
+    &:not(.collapsed) {
+        color: Kshaccordion-button-active-color;
+        background-color: Kshaccordion-button-active-bg;
+        box-shadow: inset 0 (Kshaccordion-border-width * -1) 0 Kshaccordion-border-color;
+        &::after {
+            background-image: escape-svg(Kshaccordion-button-active-icon);
+            transform: Kshaccordion-icon-transform;
+        }
+    }
+    // Accordion icon
+    &::after {
+        flex-shrink: 0;
+        width: Kshaccordion-icon-width;
+        height: Kshaccordion-icon-width;
+        margin-left: auto;
+        content: "";
+        background-image: escape-svg(Kshaccordion-button-icon);
+        background-repeat: no-repeat;
+        background-size: Kshaccordion-icon-width;
+        @include transition(Kshaccordion-icon-transition);
+    }
+    &:hover {
+        z-index: 2;
+    }
+    &:focus {
+        z-index: 3;
+        border-color: Kshaccordion-button-focus-border-color;
+        outline: 0;
+        box-shadow: Kshaccordion-button-focus-box-shadow;
+    }
+}
+
+.accordion-header {
+    margin-bottom: 0;
+}
+
+.accordion-item {
+    background-color: Kshaccordion-bg;
+    border: Kshaccordion-border-width solid Kshaccordion-border-color;
+    &:first-of-type {
+        @include border-top-radius(Kshaccordion-border-radius);
+        .accordion-button {
+            @include border-top-radius(Kshaccordion-inner-border-radius);
+        }
+    }
+    &:not(:first-of-type) {
+        border-top: 0;
+    }
+    // Only set a border-radius on the last item if the accordion is collapsed
+    &:last-of-type {
+        @include border-bottom-radius(Kshaccordion-border-radius);
+        .accordion-button {
+            &.collapsed {
+                @include border-bottom-radius(Kshaccordion-inner-border-radius);
+            }
+        }
+        .accordion-collapse {
+            @include border-bottom-radius(Kshaccordion-border-radius);
+        }
+    }
+}
+
+.accordion-body {
+    padding: Kshaccordion-body-padding-y Kshaccordion-body-padding-x;
+}
+
+// Flush accordion items
+//
+// Remove borders and border-radius to keep accordion items edge-to-edge.
+.accordion-flush {
+    .accordion-collapse {
+        border-width: 0;
+    }
+    .accordion-item {
+        border-right: 0;
+        border-left: 0;
+        @include border-radius(0);
+        &:first-child {
+            border-top: 0;
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+        .accordion-button {
+            @include border-radius(0);
+        }
+    }
+}

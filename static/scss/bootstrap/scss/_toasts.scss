@@ -1,0 +1,47 @@
+.toast {
+    width: Kshtoast-max-width;
+    max-width: 100%;
+    @include font-size(Kshtoast-font-size);
+    color: Kshtoast-color;
+    pointer-events: auto;
+    background-color: Kshtoast-background-color;
+    background-clip: padding-box;
+    border: Kshtoast-border-width solid Kshtoast-border-color;
+    box-shadow: Kshtoast-box-shadow;
+    @include border-radius(Kshtoast-border-radius);
+    &:not(.showing):not(.show) {
+        opacity: 0;
+    }
+    &.hide {
+        display: none;
+    }
+}
+
+.toast-container {
+    width: max-content;
+    max-width: 100%;
+    pointer-events: none;
+    > :not(:last-child) {
+        margin-bottom: Kshtoast-spacing;
+    }
+}
+
+.toast-header {
+    display: flex;
+    align-items: center;
+    padding: Kshtoast-padding-y Kshtoast-padding-x;
+    color: Kshtoast-header-color;
+    background-color: Kshtoast-header-background-color;
+    background-clip: padding-box;
+    border-bottom: Kshtoast-border-width solid Kshtoast-header-border-color;
+    @include border-top-radius(subtract(Kshtoast-border-radius, Kshtoast-border-width));
+    .btn-close {
+        margin-right: Kshtoast-padding-x / -2;
+        margin-left: Kshtoast-padding-x;
+    }
+}
+
+.toast-body {
+    padding: Kshtoast-padding-x; // apply to both vertical and horizontal
+    word-wrap: break-word;
+}

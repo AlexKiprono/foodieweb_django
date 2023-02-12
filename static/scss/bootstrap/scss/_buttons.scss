@@ -1,0 +1,97 @@
+//
+// Base styles
+//
+.btn {
+    display: inline-block;
+    font-family: Kshbtn-font-family;
+    font-weight: Kshbtn-font-weight;
+    line-height: Kshbtn-line-height;
+    color: Kshbody-color;
+    text-align: center;
+    text-decoration: if(Kshlink-decoration==none, null, none);
+    white-space: Kshbtn-white-space;
+    vertical-align: middle;
+    cursor: if(Kshenable-button-pointers, pointer, null);
+    user-select: none;
+    background-color: transparent;
+    border: Kshbtn-border-width solid transparent;
+    @include button-size(Kshbtn-padding-y, Kshbtn-padding-x, Kshbtn-font-size, Kshbtn-border-radius);
+    @include transition(Kshbtn-transition);
+    &:hover {
+        color: Kshbody-color;
+        text-decoration: if(Kshlink-hover-decoration==underline, none, null);
+    }
+    .btn-check:focus+&,
+    &:focus {
+        outline: 0;
+        box-shadow: Kshbtn-focus-box-shadow;
+    }
+    .btn-check:checked+&,
+    .btn-check:active+&,
+    &:active,
+    &.active {
+        @include box-shadow(Kshbtn-active-box-shadow);
+        &:focus {
+            @include box-shadow(Kshbtn-focus-box-shadow, Kshbtn-active-box-shadow);
+        }
+    }
+    &:disabled,
+    &.disabled,
+    fieldset:disabled & {
+        pointer-events: none;
+        opacity: Kshbtn-disabled-opacity;
+        @include box-shadow(none);
+    }
+}
+
+//
+// Alternate buttons
+//
+// scss-docs-start btn-variant-loops
+@each Kshcolor,
+Kshvalue in Kshtheme-colors {
+    .btn-#{Kshcolor} {
+        @include button-variant(Kshvalue, Kshvalue);
+    }
+}
+
+@each Kshcolor,
+Kshvalue in Kshtheme-colors {
+    .btn-outline-#{Kshcolor} {
+        @include button-outline-variant(Kshvalue);
+    }
+}
+
+// scss-docs-end btn-variant-loops
+//
+// Link buttons
+//
+// Make a button look and behave like a link
+.btn-link {
+    font-weight: Kshfont-weight-normal;
+    color: Kshbtn-link-color;
+    text-decoration: Kshlink-decoration;
+    &:hover {
+        color: Kshbtn-link-hover-color;
+        text-decoration: Kshlink-hover-decoration;
+    }
+    &:focus {
+        text-decoration: Kshlink-hover-decoration;
+    }
+    &:disabled,
+    &.disabled {
+        color: Kshbtn-link-disabled-color;
+    }
+    // No need for an active state here
+}
+
+//
+// Button Sizes
+//
+.btn-lg {
+    @include button-size(Kshbtn-padding-y-lg, Kshbtn-padding-x-lg, Kshbtn-font-size-lg, Kshbtn-border-radius-lg);
+}
+
+.btn-sm {
+    @include button-size(Kshbtn-padding-y-sm, Kshbtn-padding-x-sm, Kshbtn-font-size-sm, Kshbtn-border-radius-sm);
+}

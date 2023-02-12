@@ -1,0 +1,46 @@
+// Gradients
+// scss-docs-start gradient-bg-mixin
+@mixin gradient-bg(Kshcolor: null) {
+    background-color: Kshcolor;
+    @if Kshenable-gradients {
+        background-image: var(--#{Kshvariable-prefix}gradient);
+    }
+}
+
+// scss-docs-end gradient-bg-mixin
+// scss-docs-start gradient-mixins
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+@mixin gradient-x(Kshstart-color: Kshgray-700, Kshend-color: Kshgray-800, Kshstart-percent: 0%, Kshend-percent: 100%) {
+    background-image: linear-gradient(to right, Kshstart-color Kshstart-percent, Kshend-color Kshend-percent);
+}
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+@mixin gradient-y(Kshstart-color: Kshgray-700, Kshend-color: Kshgray-800, Kshstart-percent: null, Kshend-percent: null) {
+    background-image: linear-gradient(to bottom, Kshstart-color Kshstart-percent, Kshend-color Kshend-percent);
+}
+
+@mixin gradient-directional(Kshstart-color: Kshgray-700, Kshend-color: Kshgray-800, Kshdeg: 45deg) {
+    background-image: linear-gradient(Kshdeg, Kshstart-color, Kshend-color);
+}
+
+@mixin gradient-x-three-colors(Kshstart-color: Kshblue, Kshmid-color: Kshpurple, Kshcolor-stop: 50%, Kshend-color: Kshred) {
+    background-image: linear-gradient(to right, Kshstart-color, Kshmid-color Kshcolor-stop, Kshend-color);
+}
+
+@mixin gradient-y-three-colors(Kshstart-color: Kshblue, Kshmid-color: Kshpurple, Kshcolor-stop: 50%, Kshend-color: Kshred) {
+    background-image: linear-gradient(Kshstart-color, Kshmid-color Kshcolor-stop, Kshend-color);
+}
+
+@mixin gradient-radial(Kshinner-color: Kshgray-700, Kshouter-color: Kshgray-800) {
+    background-image: radial-gradient(circle, Kshinner-color, Kshouter-color);
+}
+
+@mixin gradient-striped(Kshcolor: rgba(Kshwhite, .15), Kshangle: 45deg) {
+    background-image: linear-gradient(Kshangle, Kshcolor 25%, transparent 25%, transparent 50%, Kshcolor 50%, Kshcolor 75%, transparent 75%, transparent);
+}
+
+// scss-docs-end gradient-mixins

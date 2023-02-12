@@ -1,0 +1,58 @@
+.pagination {
+    display: flex;
+    @include list-unstyled();
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    color: Kshpagination-color;
+    text-decoration: if(Kshlink-decoration==none, null, none);
+    background-color: Kshpagination-bg;
+    border: Kshpagination-border-width solid Kshpagination-border-color;
+    @include transition(Kshpagination-transition);
+    &:hover {
+        z-index: 2;
+        color: Kshpagination-hover-color;
+        text-decoration: if(Kshlink-hover-decoration==underline, none, null);
+        background-color: Kshpagination-hover-bg;
+        border-color: Kshpagination-hover-border-color;
+    }
+    &:focus {
+        z-index: 3;
+        color: Kshpagination-focus-color;
+        background-color: Kshpagination-focus-bg;
+        outline: Kshpagination-focus-outline;
+        box-shadow: Kshpagination-focus-box-shadow;
+    }
+}
+
+.page-item {
+    &:not(:first-child) .page-link {
+        margin-left: Kshpagination-margin-start;
+    }
+    &.active .page-link {
+        z-index: 3;
+        color: Kshpagination-active-color;
+        @include gradient-bg(Kshpagination-active-bg);
+        border-color: Kshpagination-active-border-color;
+    }
+    &.disabled .page-link {
+        color: Kshpagination-disabled-color;
+        pointer-events: none;
+        background-color: Kshpagination-disabled-bg;
+        border-color: Kshpagination-disabled-border-color;
+    }
+}
+
+//
+// Sizing
+//
+@include pagination-size(Kshpagination-padding-y, Kshpagination-padding-x, null, Kshpagination-border-radius);
+.pagination-lg {
+    @include pagination-size(Kshpagination-padding-y-lg, Kshpagination-padding-x-lg, Kshfont-size-lg, Kshpagination-border-radius-lg);
+}
+
+.pagination-sm {
+    @include pagination-size(Kshpagination-padding-y-sm, Kshpagination-padding-x-sm, Kshfont-size-sm, Kshpagination-border-radius-sm);
+}

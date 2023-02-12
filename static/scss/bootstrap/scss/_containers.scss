@@ -1,0 +1,36 @@
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+@if Kshenable-grid-classes {
+    // Single container class with breakpoint max-widths
+    .container, // 100% wide container at all breakpoints
+    .container-fluid {
+        @include make-container();
+    }
+    // Responsive containers that are 100% wide until a breakpoint
+    @each Kshbreakpoint,
+    Kshcontainer-max-width in Kshcontainer-max-widths {
+        .container-#{Kshbreakpoint} {
+            @extend .container-fluid;
+        }
+        @include media-breakpoint-up(Kshbreakpoint, Kshgrid-breakpoints) {
+            %responsive-container-#{Kshbreakpoint} {
+                max-width: Kshcontainer-max-width;
+            }
+            // Extend each breakpoint which is smaller or equal to the current breakpoint
+            Kshextend-breakpoint: true;
+            @each Kshname,
+            Kshwidth in Kshgrid-breakpoints {
+                @if (Kshextend-breakpoint) {
+                    .container#{breakpoint-infix(Kshname, Kshgrid-breakpoints)} {
+                        @extend %responsive-container-#{Kshbreakpoint};
+                    }
+                    // Once the current breakpoint is reached, stop extending
+                    @if (Kshbreakpoint==Kshname) {
+                        Kshextend-breakpoint: false;
+                    }
+                }
+            }
+        }
+    }
+}

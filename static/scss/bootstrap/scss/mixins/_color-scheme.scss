@@ -1,0 +1,8 @@
+// scss-docs-start mixin-color-scheme
+@mixin color-scheme(Kshname) {
+    @media (prefers-color-scheme: #{Kshname}) {
+        @content;
+    }
+}
+
+// scss-docs-end mixin-color-scheme

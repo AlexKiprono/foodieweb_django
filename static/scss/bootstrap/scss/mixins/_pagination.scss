@@ -1,0 +1,30 @@
+// Pagination
+// scss-docs-start pagination-mixin
+@mixin pagination-size(Kshpadding-y, Kshpadding-x, Kshfont-size, Kshborder-radius) {
+    .page-link {
+        padding: Kshpadding-y Kshpadding-x;
+        @include font-size(Kshfont-size);
+    }
+    .page-item {
+        @if Kshpagination-margin-start==(-Kshpagination-border-width) {
+            &:first-child {
+                .page-link {
+                    @include border-start-radius(Kshborder-radius);
+                }
+            }
+            &:last-child {
+                .page-link {
+                    @include border-end-radius(Kshborder-radius);
+                }
+            }
+        }
+        @else {
+            //Add border-radius to all pageLinks in case they have left margin
+            .page-link {
+                @include border-radius(Kshborder-radius);
+            }
+        }
+    }
+}
+
+// scss-docs-end pagination-mixin

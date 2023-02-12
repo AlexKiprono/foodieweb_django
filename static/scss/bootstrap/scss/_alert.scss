@@ -1,0 +1,53 @@
+//
+// Base styles
+//
+.alert {
+    position: relative;
+    padding: Kshalert-padding-y Kshalert-padding-x;
+    margin-bottom: Kshalert-margin-bottom;
+    border: Kshalert-border-width solid transparent;
+    @include border-radius(Kshalert-border-radius);
+}
+
+// Headings for larger alerts
+.alert-heading {
+    // Specified to prevent conflicts of changing Kshheadings-color
+    color: inherit;
+}
+
+// Provide class for links that match alerts
+.alert-link {
+    font-weight: Kshalert-link-font-weight;
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+.alert-dismissible {
+    padding-right: Kshalert-dismissible-padding-r;
+    // Adjust close link position
+    .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: Kshstretched-link-z-index + 1;
+        padding: Kshalert-padding-y * 1.25 Kshalert-padding-x;
+    }
+}
+
+// scss-docs-start alert-modifiers
+// Generate contextual modifier classes for colorizing the alert.
+@each Kshstate,
+Kshvalue in Kshtheme-colors {
+    Kshalert-background: shift-color(Kshvalue, Kshalert-bg-scale);
+    Kshalert-border: shift-color(Kshvalue, Kshalert-border-scale);
+    Kshalert-color: shift-color(Kshvalue, Kshalert-color-scale);
+    @if (contrast-ratio(Kshalert-background, Kshalert-color) < Kshmin-contrast-ratio) {
+        Kshalert-color: mix(Kshvalue, color-contrast(Kshalert-background), abs(Kshalert-color-scale));
+    }
+    .alert-#{Kshstate} {
+        @include alert-variant(Kshalert-background, Kshalert-border, Kshalert-color);
+    }
+}
+
+// scss-docs-end alert-modifiers

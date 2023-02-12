@@ -1,0 +1,46 @@
+// Loop over each breakpoint
+@each Kshbreakpoint in map-keys(Kshgrid-breakpoints) {
+    // Generate media query if needed
+    @include media-breakpoint-up(Kshbreakpoint) {
+        Kshinfix: breakpoint-infix(Kshbreakpoint, Kshgrid-breakpoints);
+        // Loop over each utility property
+        @each Kshkey,
+        Kshutility in Kshutilities {
+            // The utility can be disabled with `false`, thus check if the utility is a map first
+            // Only proceed if responsive media queries are enabled or if it's the base media query
+            @if type-of(Kshutility)=="map" and (map-get(Kshutility, responsive) or Kshinfix=="") {
+                @include generate-utility(Kshutility, Kshinfix);
+            }
+        }
+    }
+}
+
+// RFS rescaling
+@media (min-width: Kshrfs-mq-value) {
+    @each Kshbreakpoint in map-keys(Kshgrid-breakpoints) {
+        Kshinfix: breakpoint-infix(Kshbreakpoint, Kshgrid-breakpoints);
+        @if (map-get(Kshgrid-breakpoints, Kshbreakpoint) < Kshrfs-breakpoint) {
+            // Loop over each utility property
+            @each Kshkey,
+            Kshutility in Kshutilities {
+                // The utility can be disabled with `false`, thus check if the utility is a map first
+                // Only proceed if responsive media queries are enabled or if it's the base media query
+                @if type-of(Kshutility)=="map" and map-get(Kshutility, rfs) and (map-get(Kshutility, responsive) or Kshinfix=="") {
+                    @include generate-utility(Kshutility, Kshinfix, true);
+                }
+            }
+        }
+    }
+}
+
+// Print utilities
+@media print {
+    @each Kshkey,
+    Kshutility in Kshutilities {
+        // The utility can be disabled with `false`, thus check if the utility is a map first
+        // Then check if the utility needs print styles
+        @if type-of(Kshutility)=="map" and map-get(Kshutility, print)==true {
+            @include generate-utility(Kshutility, "-print");
+        }
+    }
+}
